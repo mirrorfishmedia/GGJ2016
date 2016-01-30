@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class MoveAttacker : MonoBehaviour
+public class MoveReticule : MonoBehaviour
 {
 	public float speed = 6f;            // The speed that the player will move at.
 	
@@ -24,8 +24,15 @@ public class MoveAttacker : MonoBehaviour
 	void FixedUpdate ()
 	{
 		// Store the input axes.
-		float h = Input.GetAxisRaw ("Horizontal");
-		float v = Input.GetAxisRaw ("Vertical");
+
+		//float h = Grid.gameMan.monkCtrlActions.moveUnit;
+
+		//Debug.Log ("ic move: " + Grid.gameMan.monkCtrlActions.moveUnitH);
+
+		//float h = Input.GetAxisRaw ("Horizontal");
+		float h = Grid.gameMan.monkCtrlActions.moveHorizontal.Value;
+		//float v = Input.GetAxisRaw ("Vertical");
+		float v = Grid.gameMan.monkCtrlActions.moveVertical.Value;
 		
 		// Move the player around the scene.
 		Move (h, v);

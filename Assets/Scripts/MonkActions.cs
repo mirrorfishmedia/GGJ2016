@@ -9,6 +9,14 @@ public class MonkActions : PlayerActionSet {
 	public PlayerAction spawn2;
 	public PlayerAction spawn3;
 	public PlayerAction fireTurret;
+	public PlayerAction moveUnitLeft;
+	public PlayerAction moveUnitRight;
+	public PlayerOneAxisAction moveHorizontal;
+
+	public PlayerAction moveUnitUp;
+	public PlayerAction moveUnitDown;
+	public PlayerOneAxisAction moveVertical;
+
 
 	
 	public MonkActions()
@@ -18,6 +26,14 @@ public class MonkActions : PlayerActionSet {
 		spawn2 = CreatePlayerAction ("Spawn2");
 		spawn3 = CreatePlayerAction ("Spawn3");
 		fireTurret = CreatePlayerAction ("FireTurret");
+		moveUnitLeft = CreatePlayerAction ("MoveUnitLeft");
+		moveUnitRight = CreatePlayerAction ("MoveUnitRight");
+		moveHorizontal = CreateOneAxisPlayerAction (moveUnitLeft, moveUnitRight);
+
+		moveUnitUp = CreatePlayerAction ("MoveUnitUp");
+		moveUnitDown = CreatePlayerAction ("MoveUnitDown");
+		moveVertical = CreateOneAxisPlayerAction (moveUnitDown,moveUnitUp);
+
 	}
 	
 }
