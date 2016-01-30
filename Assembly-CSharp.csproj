@@ -95,11 +95,11 @@
  <Reference Include="ProBuilderCore-Unity5">
  <HintPath>C:/Users/gregh/Documents/GGJ2016/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
  </Reference>
- <Reference Include="KDTree">
- <HintPath>C:/Users/gregh/Documents/GGJ2016/Assets/ProCore/ProBuilder/Classes/ClassesLib/KDTree.dll</HintPath>
- </Reference>
  <Reference Include="ProBuilderMeshOps-Unity5">
  <HintPath>C:/Users/gregh/Documents/GGJ2016/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
+ </Reference>
+ <Reference Include="KDTree">
+ <HintPath>C:/Users/gregh/Documents/GGJ2016/Assets/ProCore/ProBuilder/Classes/ClassesLib/KDTree.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
