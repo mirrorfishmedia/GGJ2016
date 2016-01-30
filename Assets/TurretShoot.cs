@@ -11,9 +11,9 @@ public class TurretShoot : MonoBehaviour {
 	private float nextFire;
 
 	// Use this for initialization
-	void Start () 
+	void OnEnable () 
 	{
-	
+		Grid.gameMan.turretScript = this;
 	}
 	
 	// Update is called once per frame
@@ -25,7 +25,7 @@ public class TurretShoot : MonoBehaviour {
 			GameObject cloneProjectile = Instantiate(projectilePf, transform.position, transform.rotation) as GameObject;
 			Vector3 dirToTarget = targetReticule.position - transform.position;
 			Rigidbody cloneRb = cloneProjectile.GetComponent<Rigidbody>();
-			cloneRb.AddForce(dirToTarget * projectileSpeed);
+			cloneRb.AddForce(dirToTarget.normalized * projectileSpeed);
 
 		}
 	}

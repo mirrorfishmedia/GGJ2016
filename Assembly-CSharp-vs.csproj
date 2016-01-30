@@ -256,6 +256,7 @@
      <Compile Include="Assets\InControl\Test\TestInputManager.cs" />
      <Compile Include="Assets\MonkController.cs" />
      <Compile Include="Assets\MoveAttacker.cs" />
+     <Compile Include="Assets\PlayerAttack.cs" />
      <Compile Include="Assets\Projectile.cs" />
      <Compile Include="Assets\Scripts\AttackerActions.cs" />
      <Compile Include="Assets\Scripts\GameMan.cs" />
