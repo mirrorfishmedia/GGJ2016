@@ -5,6 +5,7 @@ public class GameMan : MonoBehaviour {
 
 	public Transform[] sceneDestinations;
 	public SpawnMonks monkSpawner;
+	public MonkActions monkCtrlActions;
 
 
 	// Use this for initialization
