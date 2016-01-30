@@ -1,7 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{F9400F04-ADD5-C4E3-518A-1470255F2B6D}") = "GGJ2016", "Assembly-CSharp.csproj", "{A62B5899-5D7B-5340-9460-B0C0874CDC93}"
+Project("{F9400F04-ADD5-C4E3-518A-1470255F2B6D}") = "GGJ2016", "Assembly-CSharp-vs.csproj", "{A62B5899-5D7B-5340-9460-B0C0874CDC93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,7 +17,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-					GlobalSection(MonoDevelopProperties) = preSolution
+						GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 
