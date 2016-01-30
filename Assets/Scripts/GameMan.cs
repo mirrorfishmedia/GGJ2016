@@ -27,6 +27,7 @@ public class GameMan : MonoBehaviour {
 		monkCtrlActions.spawn1.AddDefaultBinding (InputControlType.Action2);
 		monkCtrlActions.spawn2.AddDefaultBinding (InputControlType.Action3);
 		monkCtrlActions.spawn3.AddDefaultBinding (InputControlType.Action4);
+		monkCtrlActions.fireTurret.AddDefaultBinding (InputControlType.RightTrigger);
 	}
 
 	// Update is called once per frame
