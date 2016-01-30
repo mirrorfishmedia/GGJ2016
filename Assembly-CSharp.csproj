@@ -46,12 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AttackDamage.cs" />
-     <Compile Include="Assets\Billboard.cs" />
-     <Compile Include="Assets\CameraControl.cs" />
-     <Compile Include="Assets\DisableCam.cs" />
-     <Compile Include="Assets\EnemyAttack.cs" />
-     <Compile Include="Assets\EnemyHealth.cs" />
      <Compile Include="Assets\InControl\Examples\Basic\BasicExample.cs" />
      <Compile Include="Assets\InControl\Examples\Bindings\BindingsExample.cs" />
      <Compile Include="Assets\InControl\Examples\Bindings\PlayerActions.cs" />
@@ -259,10 +253,6 @@
      <Compile Include="Assets\Menu\Game Jam Menu Template\Scripts\SetAudioLevels.cs" />
      <Compile Include="Assets\Menu\Game Jam Menu Template\Scripts\ShowPanels.cs" />
      <Compile Include="Assets\Menu\Game Jam Menu Template\Scripts\StartOptions.cs" />
-     <Compile Include="Assets\MonkController.cs" />
-     <Compile Include="Assets\MoveAttacker.cs" />
-     <Compile Include="Assets\PlayerAttack.cs" />
-     <Compile Include="Assets\PlayerHealth.cs" />
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
@@ -271,16 +261,26 @@
      <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Enum.cs" />
      <Compile Include="Assets\ProCore\ProGrids\Classes\pg_SceneMeshRender.cs" />
      <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Util.cs" />
-     <Compile Include="Assets\Projectile.cs" />
      <Compile Include="Assets\Scenes\Greg Temp\turn.cs" />
+     <Compile Include="Assets\Scripts\AttackDamage.cs" />
      <Compile Include="Assets\Scripts\AttackerActions.cs" />
+     <Compile Include="Assets\Scripts\Billboard.cs" />
+     <Compile Include="Assets\Scripts\CameraControl.cs" />
+     <Compile Include="Assets\Scripts\DisableCam.cs" />
+     <Compile Include="Assets\Scripts\EnemyAttack.cs" />
+     <Compile Include="Assets\Scripts\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\GameMan.cs" />
      <Compile Include="Assets\Scripts\Grid.cs" />
      <Compile Include="Assets\Scripts\MonkActions.cs" />
+     <Compile Include="Assets\Scripts\MonkController.cs" />
+     <Compile Include="Assets\Scripts\MoveAttacker.cs" />
      <Compile Include="Assets\Scripts\MoveReticule.cs" />
-     <Compile Include="Assets\SoundMan.cs" />
-     <Compile Include="Assets\SpawnMonks.cs" />
-     <Compile Include="Assets\TurretShoot.cs" />
+     <Compile Include="Assets\Scripts\PlayerAttack.cs" />
+     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
+     <Compile Include="Assets\Scripts\Projectile.cs" />
+     <Compile Include="Assets\Scripts\SoundMan.cs" />
+     <Compile Include="Assets\Scripts\SpawnMonks.cs" />
+     <Compile Include="Assets\Scripts\TurretShoot.cs" />
      <None Include="Assets\ProCore\ProGrids\Shader\pg_GridShader.shader" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_TransparentOverlay.shader" />
      <None Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />

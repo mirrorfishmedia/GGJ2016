@@ -42,6 +42,17 @@ public class GameMan : MonoBehaviour {
 
 	}
 
+
+	void Reset()
+	{
+		Application.LoadLevel (Application.loadedLevel);
+	}
+
+	void Update()
+	{
+		if (Input.GetButton ("Jump"))
+			Reset ();
+	}
 	// Use this for initialization
 	void Start () 
 	{

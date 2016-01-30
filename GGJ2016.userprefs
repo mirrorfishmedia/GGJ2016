@@ -1,13 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/PlayerAttack.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameMan.cs">
     <Files>
-      <File FileName="Assets/EnemyHealth.cs" Line="100" Column="3" />
-      <File FileName="Assets/EnemyAttack.cs" Line="61" Column="1" />
-      <File FileName="Assets/Scripts/GameMan.cs" Line="121" Column="3" />
-      <File FileName="Assets/PlayerHealth.cs" Line="84" Column="32" />
-      <File FileName="Assets/Projectile.cs" Line="35" Column="1" />
-      <File FileName="Assets/PlayerAttack.cs" Line="24" Column="21" />
+      <File FileName="Assets/Scripts/GameMan.cs" Line="118" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
