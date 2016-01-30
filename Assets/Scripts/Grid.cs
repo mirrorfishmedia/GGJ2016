@@ -79,6 +79,7 @@ version of 4/2013
 
 
 using UnityEngine;
+using InControl;
 
 static class Grid
 {
@@ -89,6 +90,8 @@ static class Grid
 	//	public static DimensionManager dimensionManager;
 	//public static RandomSeed randomSeed;
 	public static GameMan gameMan;
+	public static InControlManager icMan;
+	public static SoundMan soundMan;
 
 
 
@@ -108,6 +111,10 @@ static class Grid
 		//		
 		g = safeFind("__GameMan");
 		gameMan = (GameMan)SafeComponent( g, "GameMan" );
+		g = safeFind("__InControl");
+		icMan = (InControlManager)SafeComponent( g, "InControlManager" );
+		g = safeFind("__SoundMan");
+		soundMan = (SoundMan)SafeComponent( g, "SoundMan" );
 
 
 		// PS. annoying arcane technical note - remember that really, in c# static constructors do not run

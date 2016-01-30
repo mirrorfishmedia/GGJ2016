@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using InControl;
 
 public class MoveAttacker : MonoBehaviour
 {
+	public int playerNumber = 0;
 	public float speed = 6f;            // The speed that the player will move at.
 	
 	Vector3 movement;                   // The vector to store the direction of the player's movement.
@@ -12,6 +14,7 @@ public class MoveAttacker : MonoBehaviour
 	
 	void Awake ()
 	{
+
 		// Create a layer mask for the floor layer.
 		//floorMask = LayerMask.GetMask ("Floor");
 		
@@ -24,8 +27,15 @@ public class MoveAttacker : MonoBehaviour
 	void FixedUpdate ()
 	{
 		// Store the input axes.
-		float h = Input.GetAxisRaw ("Horizontal");
-		float v = Input.GetAxisRaw ("Vertical");
+		
+		//float h = Grid.gameMan.monkCtrlActions.moveUnit;
+		
+		//Debug.Log ("ic move: " + Grid.gameMan.monkCtrlActions.moveUnitH);
+		
+		//float h = Input.GetAxisRaw ("Horizontal");
+		float h = Grid.gameMan.attackerActions1.moveAttackerHorizontal.Value;
+		//float v = Input.GetAxisRaw ("Vertical");
+		float v = Grid.gameMan.attackerActions1.moveAttackerVertical.Value;
 		
 		// Move the player around the scene.
 		Move (h, v);
@@ -58,7 +68,7 @@ public class MoveAttacker : MonoBehaviour
 		RaycastHit floorHit;
 		
 		// Perform the raycast and if it hits something on the floor layer...
-
+		
 		/*
 		if(Physics.Raycast (camRay, out floorHit, camRayLength, floorMask))
 		{
@@ -75,7 +85,7 @@ public class MoveAttacker : MonoBehaviour
 			playerRigidbody.MoveRotation (newRotation);
 		}
 		*/
-
+		
 	}
 	
 	void Animating (float h, float v)
