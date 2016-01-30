@@ -46,15 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Billboard.cs" />
      <Compile Include="Assets\CameraControl.cs" />
-     <Compile Include="Assets\Game Jam Menu Template\Scripts\DontDestroy.cs" />
-     <Compile Include="Assets\Game Jam Menu Template\Scripts\EventSystemChecker.cs" />
-     <Compile Include="Assets\Game Jam Menu Template\Scripts\Pause.cs" />
-     <Compile Include="Assets\Game Jam Menu Template\Scripts\PlayMusic.cs" />
-     <Compile Include="Assets\Game Jam Menu Template\Scripts\QuitApplication.cs" />
-     <Compile Include="Assets\Game Jam Menu Template\Scripts\SetAudioLevels.cs" />
-     <Compile Include="Assets\Game Jam Menu Template\Scripts\ShowPanels.cs" />
-     <Compile Include="Assets\Game Jam Menu Template\Scripts\StartOptions.cs" />
+     <Compile Include="Assets\DisableCam.cs" />
      <Compile Include="Assets\InControl\Examples\Basic\BasicExample.cs" />
      <Compile Include="Assets\InControl\Examples\Bindings\BindingsExample.cs" />
      <Compile Include="Assets\InControl\Examples\Bindings\PlayerActions.cs" />
@@ -254,6 +248,14 @@
      <Compile Include="Assets\InControl\Source\iCade\ICadeNative.cs" />
      <Compile Include="Assets\InControl\Source\iCade\ICadeState.cs" />
      <Compile Include="Assets\InControl\Test\TestInputManager.cs" />
+     <Compile Include="Assets\Menu\Game Jam Menu Template\Scripts\DontDestroy.cs" />
+     <Compile Include="Assets\Menu\Game Jam Menu Template\Scripts\EventSystemChecker.cs" />
+     <Compile Include="Assets\Menu\Game Jam Menu Template\Scripts\Pause.cs" />
+     <Compile Include="Assets\Menu\Game Jam Menu Template\Scripts\PlayMusic.cs" />
+     <Compile Include="Assets\Menu\Game Jam Menu Template\Scripts\QuitApplication.cs" />
+     <Compile Include="Assets\Menu\Game Jam Menu Template\Scripts\SetAudioLevels.cs" />
+     <Compile Include="Assets\Menu\Game Jam Menu Template\Scripts\ShowPanels.cs" />
+     <Compile Include="Assets\Menu\Game Jam Menu Template\Scripts\StartOptions.cs" />
      <Compile Include="Assets\MonkController.cs" />
      <Compile Include="Assets\MoveAttacker.cs" />
      <Compile Include="Assets\PlayerAttack.cs" />
@@ -267,8 +269,8 @@
      <Compile Include="Assets\SpawnMonks.cs" />
      <Compile Include="Assets\TurretShoot.cs" />
      <None Include="Assets\InControl\Readme\README.txt" />
-     <None Include="Assets\Game Jam Menu Template\Fonts\OpenSans\License!.txt" />
-     <None Include="Assets\Game Jam Menu Template\GameJamTemplateReadMe.txt" />
+     <None Include="Assets\Menu\Game Jam Menu Template\Fonts\OpenSans\License!.txt" />
+     <None Include="Assets\Menu\Game Jam Menu Template\GameJamTemplateReadMe.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/xUnity_5.1/Unity_5.1p3.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

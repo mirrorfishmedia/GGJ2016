@@ -1,15 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Grid.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../../MATT_SSD_DATA/PUGDBOOK_DL/9781430267461/978-1-4302-6746_1_Thorn_Chapter07_SourceCode/Start/Assets/Scripts/Billboard.cs">
     <Files>
       <File FileName="Assets/MoveAttacker.cs" Line="38" Column="42" />
-      <File FileName="Assets/Scripts/GameMan.cs" Line="113" Column="1" />
-      <File FileName="Assets/Scripts/AttackerActions.cs" Line="21" Column="58" />
-      <File FileName="Assets/PlayerAttack.cs" Line="21" Column="4" />
-      <File FileName="Assets/TurretShoot.cs" Line="28" Column="43" />
-      <File FileName="Assets/CameraControl.cs" Line="52" Column="1" />
-      <File FileName="Assets/Scripts/MoveReticule.cs" Line="33" Column="1" />
-      <File FileName="Assets/Scripts/Grid.cs" Line="114" Column="68" />
+      <File FileName="Assets/Scripts/GameMan.cs" Line="1" Column="1" />
+      <File FileName="Assets/SoundMan.cs" Line="1" Column="1" />
+      <File FileName="Assets/Menu/Game Jam Menu Template/Scripts/PlayMusic.cs" Line="4" Column="1" />
+      <File FileName="Assets/Menu/Game Jam Menu Template/Scripts/StartOptions.cs" Line="1" Column="1" />
+      <File FileName="Assets/Menu/Game Jam Menu Template/Scripts/EventSystemChecker.cs" Line="1" Column="1" />
+      <File FileName="Assets/MonkController.cs" Line="61" Column="5" />
+      <File FileName="Assets/DisableCam.cs" Line="9" Column="37" />
+      <File FileName="../../../../../MATT_SSD_DATA/PUGDBOOK_DL/9781430267461/978-1-4302-6746_1_Thorn_Chapter07_SourceCode/Start/Assets/Scripts/Billboard.cs" Line="2" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

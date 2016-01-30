@@ -3,13 +3,17 @@ using System.Collections;
 
 public class SoundMan : MonoBehaviour {
 
+	public AudioSource source; 
+
 	// Use this for initialization
-	void Start () {
-	
+	void OnEnable () 
+	{
+		source = GetComponent<AudioSource> ();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
+	public void PlayClip(AudioClip clip)
+	{
+		source.clip = clip;
+		source.Play ();
 	}
 }
