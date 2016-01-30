@@ -1,11 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MoveAttacker.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MonkController.cs">
     <Files>
       <File FileName="Assets/Game Jam Menu Template/Scripts/PlayMusic.cs" Line="4" Column="1" />
       <File FileName="Assets/Game Jam Menu Template/Scripts/StartOptions.cs" Line="1" Column="1" />
-      <File FileName="Assets/Game Jam Menu Template/Scripts/EventSystemChecker.cs" Line="19" Column="3" />
-      <File FileName="Assets/MoveAttacker.cs" Line="77" Column="5" />
+      <File FileName="Assets/Game Jam Menu Template/Scripts/EventSystemChecker.cs" Line="1" Column="1" />
+      <File FileName="Assets/MonkController.cs" Line="42" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

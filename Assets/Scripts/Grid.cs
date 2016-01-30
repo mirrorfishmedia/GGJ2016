@@ -88,7 +88,7 @@ static class Grid
 
 	//	public static DimensionManager dimensionManager;
 	//public static RandomSeed randomSeed;
-	public static GameMan levelManager;
+	public static GameMan gameMan;
 
 
 
@@ -107,7 +107,7 @@ static class Grid
 		//		randomSeed = (RandomSeed)SafeComponent( g, "RandomSeed" );
 		//		
 		g = safeFind("__GameMan");
-		levelManager = (GameMan)SafeComponent( g, "GameMan" );
+		gameMan = (GameMan)SafeComponent( g, "GameMan" );
 
 
 		// PS. annoying arcane technical note - remember that really, in c# static constructors do not run

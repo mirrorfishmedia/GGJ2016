@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\GameMan.cs" />
      <Compile Include="Assets\Scripts\Grid.cs" />
      <Compile Include="Assets\Scripts\MoveAttacker.cs" />
+     <Compile Include="Assets\SpawnMonks.cs" />
      <None Include="Assets\Game Jam Menu Template\Fonts\OpenSans\License!.txt" />
      <None Include="Assets\Game Jam Menu Template\GameJamTemplateReadMe.txt" />
  <Reference Include="UnityEngine.UI">

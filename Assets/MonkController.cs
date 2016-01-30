@@ -16,9 +16,14 @@ public class MonkController : MonoBehaviour {
 	void OnEnable () 
 	{
 		agent = GetComponent<NavMeshAgent>();
+
+	}
+
+	void Start()
+	{
 		agent.destination = destStack.position;
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -37,10 +42,16 @@ public class MonkController : MonoBehaviour {
 
 		if (other.gameObject.CompareTag ("DropPoint")) 
 		{
-			carryingResource = false;
-			resource1.SetActive(false);
-			agent.destination = destStack.position;
-			transform.LookAt(agent.destination);
+
+			//agent.Stop();
+			//transform.LookAt(agent.destination);
+			if (carryingResource)
+			{
+				carryingResource = false;
+				this.gameObject.SetActive(false);
+			}
+				
+
 		}
 
 
