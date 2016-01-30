@@ -5,6 +5,10 @@ public class Projectile : MonoBehaviour {
 
 	public GameObject particles;
 
+	public int bulletDamage = 10;
+
+
+	private PlayerHealth playerHealth;
 	// Use this for initialization
 	void Start () 
 	{
@@ -21,5 +25,11 @@ public class Projectile : MonoBehaviour {
 		particles.SetActive (true);
 		particles.transform.SetParent (null);
 		this.gameObject.SetActive (false);
+		if(other.gameObject.CompareTag("Player"))
+		{
+			playerHealth = other.gameObject.GetComponent<PlayerHealth>();
+			playerHealth.TakeDamage (bulletDamage);
+		}
 	}
+	
 }

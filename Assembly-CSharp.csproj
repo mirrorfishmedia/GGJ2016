@@ -46,9 +46,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AttackDamage.cs" />
      <Compile Include="Assets\Billboard.cs" />
      <Compile Include="Assets\CameraControl.cs" />
      <Compile Include="Assets\DisableCam.cs" />
+     <Compile Include="Assets\EnemyAttack.cs" />
+     <Compile Include="Assets\EnemyHealth.cs" />
      <Compile Include="Assets\InControl\Examples\Basic\BasicExample.cs" />
      <Compile Include="Assets\InControl\Examples\Bindings\BindingsExample.cs" />
      <Compile Include="Assets\InControl\Examples\Bindings\PlayerActions.cs" />
@@ -259,7 +262,17 @@
      <Compile Include="Assets\MonkController.cs" />
      <Compile Include="Assets\MoveAttacker.cs" />
      <Compile Include="Assets\PlayerAttack.cs" />
+     <Compile Include="Assets\PlayerHealth.cs" />
+     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
+     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
+     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
+     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Runtime Editing\RuntimeEdit.cs" />
+     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Constant.cs" />
+     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Enum.cs" />
+     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_SceneMeshRender.cs" />
+     <Compile Include="Assets\ProCore\ProGrids\Classes\pg_Util.cs" />
      <Compile Include="Assets\Projectile.cs" />
+     <Compile Include="Assets\Scenes\Greg Temp\turn.cs" />
      <Compile Include="Assets\Scripts\AttackerActions.cs" />
      <Compile Include="Assets\Scripts\GameMan.cs" />
      <Compile Include="Assets\Scripts\Grid.cs" />
@@ -268,9 +281,26 @@
      <Compile Include="Assets\SoundMan.cs" />
      <Compile Include="Assets\SpawnMonks.cs" />
      <Compile Include="Assets\TurretShoot.cs" />
+     <None Include="Assets\ProCore\ProGrids\Shader\pg_GridShader.shader" />
+     <None Include="Assets\ProCore\ProBuilder\Shader\pb_TransparentOverlay.shader" />
+     <None Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
+     <None Include="Assets\ProCore\ProBuilder\About\changelog.txt" />
+     <None Include="Assets\ProCore\ProBuilder\Shader\DiffuseVertexColor.shader" />
+     <None Include="Assets\ProCore\ProBuilder\Shader\pb_FaceHighlight.shader" />
      <None Include="Assets\InControl\Readme\README.txt" />
+     <None Include="Assets\ProCore\ProBuilder\Shader\UnlitSolidColor.shader" />
+     <None Include="Assets\ProCore\ProGrids\About\pc_AboutEntry_ProGrids.txt" />
+     <None Include="Assets\ProCore\ProBuilder\Shader\DiffuseTextureBlend.shader" />
+     <None Include="Assets\ProCore\ProBuilder\Shader\pb_StandardVertexColor.shader" />
+     <None Include="Assets\ProCore\ProBuilder\Shader\pb_HideVertices.shader" />
+     <None Include="Assets\ProCore\ProBuilder\Shader\pb_UnlitVertexColor.shader" />
      <None Include="Assets\Menu\Game Jam Menu Template\Fonts\OpenSans\License!.txt" />
+     <None Include="Assets\ProCore\ProBuilder\About\pc_AboutEntry_ProBuilder.txt" />
+     <None Include="Assets\ProCore\ProBuilder\Shader\pb_VertexShader.shader" />
+     <None Include="Assets\ProCore\ProGrids\About\changelog.txt" />
+     <None Include="Assets\ProCore\ProBuilder\readme.txt" />
      <None Include="Assets\Menu\Game Jam Menu Template\GameJamTemplateReadMe.txt" />
+     <None Include="Assets\ProCore\ProBuilder\About\Credits.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/xUnity_5.1/Unity_5.1p3.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -279,6 +309,15 @@
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/xUnity_5.1/Unity_5.1p3.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="ProBuilderCore-Unity5">
+ <HintPath>/Users/matthewschell/Desktop/MFM/GGJ2016/Project/GGJ2016/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
+ </Reference>
+ <Reference Include="KDTree">
+ <HintPath>/Users/matthewschell/Desktop/MFM/GGJ2016/Project/GGJ2016/Assets/ProCore/ProBuilder/Classes/ClassesLib/KDTree.dll</HintPath>
+ </Reference>
+ <Reference Include="ProBuilderMeshOps-Unity5">
+ <HintPath>/Users/matthewschell/Desktop/MFM/GGJ2016/Project/GGJ2016/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/xUnity_5.1/Unity_5.1p3.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

@@ -46,9 +46,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AttackDamage.cs" />
      <Compile Include="Assets\Billboard.cs" />
      <Compile Include="Assets\CameraControl.cs" />
      <Compile Include="Assets\DisableCam.cs" />
+     <Compile Include="Assets\EnemyAttack.cs" />
+     <Compile Include="Assets\EnemyHealth.cs" />
      <Compile Include="Assets\InControl\Examples\Basic\BasicExample.cs" />
      <Compile Include="Assets\InControl\Examples\Bindings\BindingsExample.cs" />
      <Compile Include="Assets\InControl\Examples\Bindings\PlayerActions.cs" />
@@ -259,6 +262,7 @@
      <Compile Include="Assets\MonkController.cs" />
      <Compile Include="Assets\MoveAttacker.cs" />
      <Compile Include="Assets\PlayerAttack.cs" />
+     <Compile Include="Assets\PlayerHealth.cs" />
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
      <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />

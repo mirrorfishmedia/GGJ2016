@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using InControl;
+using UnityEngine.UI;
 
 public class GameMan : MonoBehaviour {
 
@@ -25,10 +26,14 @@ public class GameMan : MonoBehaviour {
 	public Transform camSpawnPos;
 	public Transform reticuleSpawnPos;
 	public TurretShoot turretScript;
+	public Image damageImage1;
+	public Slider healthSlider1;
 
 
 	[HideInInspector] public GameObject spawnedCam;
 	private CameraControl camControlScript;
+
+
 
 	void Awake()
 	{
@@ -109,9 +114,11 @@ public class GameMan : MonoBehaviour {
 		{
 			GameObject clonePlayer = Instantiate (attackingPlayerPf, spawnPoints [i].position, Quaternion.identity) as GameObject;
 			//Debug.Log ("pos: "+ attackerSpawnPoints [i].position);
-
+			PlayerHealth playerHealth = clonePlayer.GetComponent<PlayerHealth>();
+			playerHealth.damageImage = damageImage1;
+			playerHealth.healthSlider = healthSlider1;
 			camControlScript.m_Targets[i]  = clonePlayer.transform;
-			Debug.Log ("cct " + camControlScript.m_Targets[i]);
+//			Debug.Log ("cct " + camControlScript.m_Targets[i]);
 		}
 
 	}
