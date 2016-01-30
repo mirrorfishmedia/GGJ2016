@@ -8,6 +8,7 @@ public class MonkActions : PlayerActionSet {
 	public PlayerAction spawn1;
 	public PlayerAction spawn2;
 	public PlayerAction spawn3;
+	public PlayerAction fireTurret;
 
 	
 	public MonkActions()
@@ -16,6 +17,7 @@ public class MonkActions : PlayerActionSet {
 		spawn1 = CreatePlayerAction ("Spawn1");
 		spawn2 = CreatePlayerAction ("Spawn2");
 		spawn3 = CreatePlayerAction ("Spawn3");
+		fireTurret = CreatePlayerAction ("FireTurret");
 	}
 	
 }

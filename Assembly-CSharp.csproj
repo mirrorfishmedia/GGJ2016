@@ -260,6 +260,7 @@
      <Compile Include="Assets\Scripts\MonkActions.cs" />
      <Compile Include="Assets\Scripts\MoveAttacker.cs" />
      <Compile Include="Assets\SpawnMonks.cs" />
+     <Compile Include="Assets\TurretShoot.cs" />
      <None Include="Assets\InControl\Readme\README.txt" />
      <None Include="Assets\Game Jam Menu Template\Fonts\OpenSans\License!.txt" />
      <None Include="Assets\Game Jam Menu Template\GameJamTemplateReadMe.txt" />
