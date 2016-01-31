@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class SoundMan : MonoBehaviour {
-
+	public static SoundMan main;
 
 	float randomizeMin = .70f;
 	float randomizeMax = 1.2f;
@@ -21,13 +21,20 @@ public class SoundMan : MonoBehaviour {
 	public AudioClip[] singleColorScoredClips;
 
 
-	private AudioSource source; 
-
-	// Use this for initialization
-	void OnEnable () 
-	{
-		source = GetComponent<AudioSource> ();
+	private AudioSource _source;
+	private AudioSource source{
+		get{
+			if (_source == null)
+				_source = gameObject.AddComponent<AudioSource> ();
+			return _source;
+		}
 	}
+
+	void Awake(){
+		main = this;
+	}
+
+
 
 	public void FireTurret()
 	{

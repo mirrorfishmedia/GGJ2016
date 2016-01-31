@@ -40,4 +40,24 @@ public class UIMan : MonoBehaviour {
 	{
 		canvasGroups [3].target = 1;
 	}
+
+	public void FadeInSequencePrompt()
+	{
+		canvasGroups [4].target = 1;
+	}
+
+	public void FadeOutSequencePrompt()
+	{
+		canvasGroups [4].target = 0;
+	}
+
+	public void FadeInAttackerWins()
+	{
+		canvasGroups [5].target = 1;
+	}
+
+	public void FadeInDefenderWins()
+	{
+		canvasGroups [6].target = 1;
+	}
 }

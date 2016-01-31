@@ -4,9 +4,9 @@ using System;
 using InControl;
 
 public class ResourceEventArgs : EventArgs{
-	public ResourceType resourceType;
-	public ResourceEventArgs(ResourceType t){
-		this.resourceType = t;
+	public int index;
+	public ResourceEventArgs(int index){
+		this.index = index;
 	}
 }
 
@@ -56,18 +56,18 @@ public class ResourceSequence : MonoBehaviour {
 			t = ResourceType.Pyramid;
 		}
 
-		if (t != ResourceType.NONE){
+		if (t != ResourceType.NONE && currentInputIndex <= 2){
 			Debug.Log("Input " + t.ToString());
-			OnInputted.Raise(this, new ResourceEventArgs(t));
+			OnInputted.Raise(this, new ResourceEventArgs(currentInputIndex));
 			inputArray[currentInputIndex++] = t;
 			if (currentInputIndex >= 3){
-				Checker();
+				StartCoroutine(Checker());
 			}
 		}
 	}
 
-	void Checker(){
-
+	IEnumerator Checker(){
+		yield return new WaitForSeconds (1f);
 		bool success = CheckArray();
 		if (success){
 			inputting = false;

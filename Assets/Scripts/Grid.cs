@@ -91,7 +91,6 @@ static class Grid
 	//public static RandomSeed randomSeed;
 	public static GameMan gameMan;
 	public static InControlManager icMan;
-	public static SoundMan soundMan;
 
 
 
@@ -114,7 +113,7 @@ static class Grid
 		g = safeFind("__InControl");
 		icMan = (InControlManager)SafeComponent( g, "InControlManager" );
 		g = safeFind("__SoundMan");
-		soundMan = (SoundMan)SafeComponent( g, "SoundMan" );
+		//soundMan = (SoundMan)SafeComponent( g, "SoundMan" );
 
 
 		// PS. annoying arcane technical note - remember that really, in c# static constructors do not run

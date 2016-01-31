@@ -37,11 +37,11 @@ public class HealthSpriteMan : MonoBehaviour {
 			indicators[i].AnimateActive(i < health);
 			if (playAttackerHitSound)
 			{
-				Grid.soundMan.PlayerHit();
+				SoundMan.main.PlayerHit();
 			}
 			else
 			{
-				Grid.soundMan.MonkHit();
+				SoundMan.main.MonkHit();
 			}
 		}
 	}

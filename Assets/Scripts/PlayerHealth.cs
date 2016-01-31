@@ -42,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
 		
 		// Play the hurt sound effect.
 		//playerAudio.Play ();
-		Grid.soundMan.PlayerHit ();
+		SoundMan.main.PlayerHit ();
 		// If the player has lost all it's health and the death flag hasn't been set yet...
 		if(currentHealth <= 0 && !isDead)
 		{

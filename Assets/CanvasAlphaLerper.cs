@@ -7,7 +7,7 @@ public class CanvasAlphaLerper : MonoBehaviour {
 
 	public float target;
 
-	public float speed;
+	public float speed=1;
 
 	private CanvasGroup canvasGroup;
 

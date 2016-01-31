@@ -6,6 +6,8 @@ public class CameraControl : MonoBehaviour
 	public static CameraControl main;
 	public static Quaternion rot{get{return main.transform.rotation;}}
 
+	public bool canAdd = true;
+
 	public float m_DampTime = 0.2f;                 // Approximate time for the camera to refocus.
 	public float m_ScreenEdgeBuffer = 4f;           // Space between the top/bottom most target and the screen edge.
 	public float m_MinSize = 6.5f;                  // The smallest orthographic size the camera can be.
@@ -21,6 +23,7 @@ public class CameraControl : MonoBehaviour
 		AddTarget(target.transform);
 	}
 	public void AddTarget(Transform target){
+		if (canAdd)
 		m_Targets.Add(target);
 	}
 

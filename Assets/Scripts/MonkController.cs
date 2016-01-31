@@ -35,14 +35,14 @@ public class MonkController : Unit {
 	{
 		agent.destination = destStack.position;
 		agent.updateRotation = false;
-		Grid.soundMan.MonkSpawn ();
+		SoundMan.main.MonkSpawn ();
 	}
 
 
 	void Die(){
 		source.clip  = dieSound;
 		source.Play();
-		Grid.soundMan.MonkDie ();
+		SoundMan.main.MonkDie ();
 	}
 
 	void CarryResource(ResourceType rtype){
@@ -51,14 +51,14 @@ public class MonkController : Unit {
 		this.resourceCarried = rtype;
 		SetResourceIcon (resourceCarried);
 		agent.SetDestination(home.transform.position);
-		Grid.soundMan.ResourcePickup();
+		SoundMan.main.ResourcePickup();
 	}
 
 	void ScoreResource(){
 		if (carryingResource){
 			carryingResource = false;
 			Grid.gameMan.AddResource(resourceCarried);
-			Grid.soundMan.ResourceCollect();
+			SoundMan.main.ResourceCollect();
 			this.gameObject.SetActive(false);
 		}
 	}

@@ -9,6 +9,11 @@ public class SpriteDisplay : MonoBehaviour {
 
 	private SpriteRenderer spriteRenderer;
 
+	public void SetResourceIcon(ResourceType type)
+	{
+		spriteRenderer.sprite = sprites[(int)type];
+	}
+
 	void Awake()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer> ();
@@ -21,5 +26,6 @@ public class SpriteDisplay : MonoBehaviour {
 
 	public void SetFadeActive(bool active){
 		this.active = active;
+		this.transform.localScale = active ? Vector3.one : transform.localScale;
 	}
 }

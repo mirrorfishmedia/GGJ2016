@@ -16,6 +16,8 @@ public class GameMan : MonoBehaviour {
 	public MonkActions monkCtrlActions;
 	public List<AttackerActions> attackerActions;
 
+	public List<Transform> attackerTransforms;
+
 	public Transform camSpawnPos;
 	private ResourceType neededResource;
 	ResourceSequence sequencer;
@@ -45,12 +47,15 @@ public class GameMan : MonoBehaviour {
 
 	void Awake()
 	{
+		Time.timeScale = 1f;
+
 		uiMan = GetComponent<UIMan> ();
 		SetupCamera ();
 		sequencer = gameObject.AddComponent<ResourceSequence>(); 
 
 		joiner = GetComponent<InputMan>();
 		joiner.OnStartPressed += (sender, e) => {
+			uiMan.FadeInSequencePrompt();
 			sequencer.StartInput(joiner.devices[0]);
 			uiMan.FadeOutStart();
 			uiMan.FadeInTimer();
@@ -61,6 +66,24 @@ public class GameMan : MonoBehaviour {
 //		joiner.OnStartPressed += (sender, e) => {HardCodeStart();};
 
 		joiner.OnPlayerJoined += (sender, e) => {uiMan.FadeOutText();};
+
+		sequencer.OnInputted += (sender, e) => {
+			resourceDisplay[e.index].SetResourceIcon(ResourceType.NONE);
+			resourceDisplay[e.index].SetFadeActive(true);
+		};
+
+		sequencer.OnInputAgain += HandleOnInputAgain;
+		sequencer.OnCheckInputFalse += (sender, e) => {
+			resourceDisplay[0].GetComponentInParent<LocalPositionSpring>().velocity += new Vector3(20f, 0f, 0f);
+			HandleOnInputAgain(sender, e);};
+		sequencer.OnCheckInputTrue += HandleOnInputAgain;
+	}
+
+	void HandleOnInputAgain (object sender, System.EventArgs e)
+	{
+		foreach (var r in resourceDisplay) {
+			r.SetFadeActive(false);
+		}
 	}
 
 	void HardCodeStart(){
@@ -95,6 +118,7 @@ public class GameMan : MonoBehaviour {
 
 	// Use this for initialization
 	public void StartGame () {
+		uiMan.FadeOutSequencePrompt ();
 		Debug.Log("START GAME!");
 		SetupDefender();
 		SetupAttackers ();
@@ -120,21 +144,28 @@ public class GameMan : MonoBehaviour {
 	void SetupAttackers()
 	{
 		attackerActions = new List<AttackerActions>();
+		attackerTransforms = new List<Transform> ();
 
 		var devices = joiner.devices;
 		for(int i = 1; i < devices.Length; i++){
 			SpawnAttacker(devices[i], (UnitColor)i);
+
 		}
 	}
 
 	void SpawnAttacker(InputDevice dev, UnitColor color){
 		var spawn = environment.playerSpawns[(int)color].transform.position;
 		var attacker = PrefabManager.Instantiate ("AttackingPlayer", spawn).GetComponent<AttackingPlayer>();
+		attackerTransforms.Add (attacker.transform);
 		attacker.Init(dev, color);
-		attacker.health.OnDie += (sender, e) => {StartCoroutine(SpawnPlayerDelayed(dev, color));};
+		attacker.health.OnDie += (sender, e) => {
+			attackerTransforms.Remove (attacker.transform);
+			StartCoroutine(SpawnPlayerDelayed(dev, color));
+		};
 	}
 
 	IEnumerator SpawnPlayerDelayed(InputDevice device, UnitColor c){
+
 		yield return new WaitForSeconds(spawnAttackerDelay);
 		SpawnAttacker(device, c);
 	}
@@ -144,6 +175,23 @@ public class GameMan : MonoBehaviour {
 	public void AddResource(ResourceType collectedResource)
 
 	{
+
+		switch (collectedResource) 
+		{
+		case ResourceType.Skull:
+			//play sound
+			break;
+		case ResourceType.Feather:
+			//play sound
+			break;
+		case ResourceType.Fire:
+			//play sound
+			break;
+		case ResourceType.Pyramid:
+			//play sound
+			break;
+		}
+
 		if (gameOver) return;
 		Debug.Log ("in addResource " + collectedResource.ToString());
 		if (collectedResource == sequencer.inputArray[colorsScored]) 
@@ -156,6 +204,8 @@ public class GameMan : MonoBehaviour {
 			{
 				currentResourceTotal = 0;
 				Debug.Log ("Reset resources to : " + currentResourceTotal);
+				resourceDisplay [colorsScored].SetResourceIcon (collectedResource);
+
 				ColorScored();
 			}
 		}
@@ -165,19 +215,34 @@ public class GameMan : MonoBehaviour {
 	{
 		Debug.Log ("in color scored");
 		resourceDisplay[colorsScored].SetFadeActive(true);
+
 		colorsScored++;
 		Debug.Log ("colors scored " + colorsScored);
-		Grid.soundMan.ColorScored ();
+		SoundMan.main.ColorScored ();
 		if (colorsScored >= colorGoal) 
 		{
 			DefenderWins();
 		}
 	}
 
+
+	void SlowDown()
+	{
+		Time.timeScale = .1f;
+		Invoke ("Reload", .5f);
+	}
+	void Reload(){
+		Application.LoadLevel (Application.loadedLevel);
+	}
+
 	void DefenderWins()
 	{
 		Debug.Log("Defender wins the round!");
-		Debug.Break();
+		//Debug.Break();
+		uiMan.FadeInDefenderWins ();
+		CameraControl.main.canAdd = false;
+		CameraControl.main.m_Targets = new List<Transform> ();
+		Invoke ("SlowDown", 1f);
 		gameOver = true;
 
 	}
@@ -185,9 +250,14 @@ public class GameMan : MonoBehaviour {
 	void AttackerWins()
 	{
 		Debug.Log("Attacker wins the round!");
-		Debug.Break();
+		//Debug.Break();
+		SoundMan.main.OutOfTime ();
+		uiMan.FadeInAttackerWins ();
+		CameraControl.main.canAdd = false;
+		CameraControl.main.m_Targets = attackerTransforms;
+		Invoke ("SlowDown", 1f);
 		gameOver = true;
-		Grid.soundMan.OutOfTime ();
+
 	}
 
 
