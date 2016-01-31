@@ -84,10 +84,12 @@ public class EnemyAttack : MonoBehaviour
 		
 		// If the player has health to lose...
 		Debug.Log ("playerhealth attack: " + playerHealth + " Time " +Time.time);
+			CameraShake.main.microShakeDuration = .2f;
 		if(playerHealth.currentHealth > 0)
 		{
 			// ... damage the player.
 			playerHealth.TakeDamage (attackDamage);
+			CameraShake.main.microShakeDuration = 1f;
 		}
 	}
 }

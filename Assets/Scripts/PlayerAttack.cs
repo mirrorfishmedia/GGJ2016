@@ -30,7 +30,8 @@ public class PlayerAttack : MonoBehaviour {
 			nextAttackTime = Time.time + attackRate;
 			attacking = true;
 			attackSphere.gameObject.SetActive (true);
-			
+			CameraShake.main.microShakeDuration = .2f;
+
 		} else 
 		{
 			if (attacking){

@@ -12,7 +12,7 @@ public class UnitRenderer : MonoBehaviour{
 
 	public HealthSpriteMan hsm{get; private set;}
 
-	private SpriteRenderer spr;
+	public SpriteRenderer spr{get; private set;}
 
 	private List<Sprite[]> playerSprites;
 	public Sprite[] playerSpritesMonk;

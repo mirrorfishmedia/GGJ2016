@@ -20,6 +20,7 @@ public class AttackDamage : MonoBehaviour {
 			PlayerHealth health = other.GetComponent<PlayerHealth>();
 
 			health.TakeDamage(damageAmount);
+			CameraShake.main.microShakeDuration = 1f;
 		}
 
 		if (other.gameObject.CompareTag ("Projectile")) {
