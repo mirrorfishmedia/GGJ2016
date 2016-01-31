@@ -32,6 +32,7 @@ public class SoundMan : MonoBehaviour {
 	public AudioClip[] resourcePickupClip;
 	public AudioClip[] singleColorScoredClips;
 
+	public AudioSource[] audioSources;
 
 	private AudioSource source; 
 
@@ -98,27 +99,27 @@ public class SoundMan : MonoBehaviour {
 
 	public void ResourceCollectFireball()
 	{
-		PlayClip (ResourceCollectFireball);
+		PlayClip (resourceCollectFire);
 	}
 
 	public void ResourceCollectTriangle()
 	{
-		PlayClip (ResourceCollectTriangle);
+		PlayClip (resourceCollectTriangle);
 	}
 
 	public void ResourceDepositSkull()
 	{
-		PlayClip (ResourceDepositSkull);
+		PlayClip (resourceDepositSkull);
 	}
 
 	public void ResourceDepositRaven()
 	{
-		PlayClip (ResourceDepositRaven);
+		PlayClip (resourceDepositRaven);
 	}
 
 	public void ResourceDepositFireball()
 	{
-		PlayClip (ResourceDepositFireball);
+		PlayClip (resourceDepositFire);
 	}
 
 
@@ -135,9 +136,21 @@ public class SoundMan : MonoBehaviour {
 
 	public void PlayClip(AudioClip[] clips)
 	{
+		/*
 		source.clip = clips[Random.Range (0, clips.Length)];
 		source.volume = Random.Range (randomizeMin, randomizeMax);
 		source.pitch = Random.Range (randomizeMin, randomizeMax);
+
 		source.Play ();
+
+*/
+
+		for (int i =0; i < audioSources.Length; i++){
+			audioSources[i].clip = clips[Random.Range (0, clips.Length)];
+			audioSources[i].volume = Random.Range (randomizeMin, randomizeMax);
+			audioSources[i].pitch = Random.Range (randomizeMin, randomizeMax);
+			audioSources[i].Play ();
+		}
 	}
 }
+
