@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Audio;
 
 public class SoundMan : MonoBehaviour {
 
+	public static SoundMan main;
+
+	public AudioMixerSnapshot fightMusic;
+	public AudioMixerSnapshot titleMusic;
 
 	float randomizeMin = .70f;
 	float randomizeMax = 1.2f;
@@ -43,6 +48,7 @@ public class SoundMan : MonoBehaviour {
 	// Use this for initialization
 	void OnEnable () 
 	{
+		main = this;
 		source = GetComponent<AudioSource> ();
 	}
 
@@ -171,6 +177,16 @@ public class SoundMan : MonoBehaviour {
 		a.pitch = Random.Range (randomizeMin, randomizeMax);
 		a.Play ();
 
+	}
+
+	public void StartTitleMusic()
+	{
+		titleMusic.TransitionTo (1f);
+	}
+
+	public void StartFightMusic()
+	{
+		fightMusic.TransitionTo (1f);
 	}
 }
 
