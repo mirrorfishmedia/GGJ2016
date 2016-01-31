@@ -7,6 +7,7 @@ public class SoundMan : MonoBehaviour {
 	float randomizeMin = .70f;
 	float randomizeMax = 1.2f;
 
+	public AudioClip[] bellSelect;
 
 	public AudioClip[] fireTurretClips;
 	public AudioClip[] monkDieClips;
