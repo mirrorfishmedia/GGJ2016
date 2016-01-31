@@ -9,6 +9,8 @@ using System;
 /// </summary>
 public class InputMan : MonoBehaviour {
 
+	public bool gameStarted = false;
+
 	public event EventHandler OnPlayerJoined;
 	public event EventHandler OnStartPressed;
 
@@ -37,7 +39,8 @@ public class InputMan : MonoBehaviour {
 			}
 		}
 
-		if (dev != null && dev.MenuWasPressed && joinedDevices.Count >= 2){
+		if (dev != null && dev.MenuWasPressed && joinedDevices.Count >= 2 && !gameStarted){
+			gameStarted = true;
 			Debug.Log("CALL START PRESSED!");
 			OnStartPressed.Raise(this);
 		}

@@ -6,27 +6,15 @@ using UnityEngine.UI;
 
 public class GameMan : MonoBehaviour {
 
-	public Environmenter environment;
+	public EnvironmentMan environment;
 
 	public DefendingPlayer defendingPlayer;
-
-	public GameObject camPrefab;
-	public GameObject turretTargetPf;
 
 	public MonkActions monkCtrlActions;
 	public List<AttackerActions> attackerActions;
 
-	public int numAttackers = 1;
-	public InputDevice inputDevice0;
-	public InputDevice inputDevice1;
-
-	public GameObject attackingPlayerPf;
-	public Transform[] spawnPoints;
 	public Transform camSpawnPos;
-	public Transform reticuleSpawnPos;
-	public TurretShoot turretScript;
-	public Image damageImage1;
-	public Slider healthSlider1;
+
 	public enum resourceColor
 	{
 		fire, water, skull, leaf
@@ -77,7 +65,8 @@ public class GameMan : MonoBehaviour {
 
 
 	void SetupCamera(){
-		spawnedCam = Instantiate (camPrefab, Vector3.zero, camSpawnPos.rotation) as GameObject;
+		Debug.Log("HEY");
+		spawnedCam = PrefabManager.Instantiate ("CameraRig", Vector3.zero, camSpawnPos.rotation) as GameObject;
 		camControlScript = spawnedCam.GetComponent<CameraControl> ();
 
 	}
@@ -94,10 +83,9 @@ public class GameMan : MonoBehaviour {
 
 		var devices = joiner.devices;
 		for(int i = 1; i < devices.Length; i++){
-			var attacker = PrefabManager.Instantiate ("AttackingPlayer", spawnPoints [i].position).GetComponent<AttackingPlayer>();
+			var attacker = PrefabManager.Instantiate ("AttackingPlayer", Vector3.zero).GetComponent<AttackingPlayer>();
 			attacker.Init(devices[i]);
 		}
-
 	}
 
 	public void AddResource(resourceColor collectedResource)
