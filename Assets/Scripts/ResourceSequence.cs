@@ -10,7 +10,7 @@ public class ResourceSequence : MonoBehaviour {
 	bool inputting = false;
 
 	int currentInputIndex;
-	ResourceType[] inputArray;
+	public ResourceType[] inputArray;
 	ResourceType[] checkArray;
 
 	void Awake(){

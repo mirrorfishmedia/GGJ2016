@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class GameMan : MonoBehaviour {
 
+	bool currentlyPlaying = false;
+	bool gameOver = false;
+
 	public EnvironmentMan environment;
 
 	public DefendingPlayer defendingPlayer;
@@ -18,11 +21,17 @@ public class GameMan : MonoBehaviour {
 	ResourceSequence sequencer;
 
 	private int currentResourceTotal = 0;
-	private int maxResources = 5;
+	private int maxResources = 1;
 	private int colorsScored = 0;
 	private int colorGoal = 4;
 
 	private InputMan joiner;
+
+	public InputTimerRenderer timerRenderer;
+
+	private float roundTimerFull = 20f;
+	private float roundTimer = 0f;
+	private float roundTimerNormalized{get{return roundTimer / roundTimerFull;}}
 
 
 	[HideInInspector] public GameObject spawnedCam;
@@ -35,7 +44,18 @@ public class GameMan : MonoBehaviour {
 		SetupCamera ();
 		sequencer = gameObject.AddComponent<ResourceSequence>(); 
 		joiner = GetComponent<InputMan>();
-		joiner.OnStartPressed += (sender, e) => {sequencer.StartInput(joiner.devices[0]);};
+//		joiner.OnStartPressed += (sender, e) => {sequencer.StartInput(joiner.devices[0]);};
+		joiner.OnStartPressed += (sender, e) => {HardCodeStart();};
+	}
+
+	void HardCodeStart(){
+		sequencer.inputArray = new ResourceType[]{
+			ResourceType.Fire,
+			ResourceType.Fire,
+			ResourceType.Fire,
+			ResourceType.Fire
+		};
+		StartGame();
 	}
 
 
@@ -45,6 +65,17 @@ public class GameMan : MonoBehaviour {
 
 
 	void Update(){
+		TimerUpdate();
+	}
+
+	void TimerUpdate(){
+		if (currentlyPlaying && !gameOver){
+			this.roundTimer -= Time.deltaTime;
+			if (this.roundTimer <= 0){
+				AttackerWins();
+			}
+		}
+		timerRenderer.SetFloat(roundTimerNormalized);
 	}
 
 	// Use this for initialization
@@ -52,6 +83,8 @@ public class GameMan : MonoBehaviour {
 		Debug.Log("START GAME!");
 		SetupDefender();
 		SetupAttackers ();
+		roundTimer = roundTimerFull;
+		currentlyPlaying = true;
 	}
 
 	void SetupDefender(){
@@ -83,8 +116,9 @@ public class GameMan : MonoBehaviour {
 	public void AddResource(ResourceType collectedResource)
 
 	{
-		Debug.Log ("in addResource");
-		if (collectedResource == neededResource) 
+		if (gameOver) return;
+		Debug.Log ("in addResource " + collectedResource.ToString());
+		if (collectedResource == sequencer.inputArray[colorsScored]) 
 		{
 			Debug.Log ("got needed color");
 
@@ -113,11 +147,13 @@ public class GameMan : MonoBehaviour {
 	void DefenderWins()
 	{
 		Debug.Log ("Defender wins the round!");
+		gameOver = true;
 	}
 
 	void AttackerWins()
 	{
 		Debug.Log ("Attacker wins the round!");
+		gameOver = true;
 	}
 
 

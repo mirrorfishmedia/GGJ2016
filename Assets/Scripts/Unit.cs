@@ -19,7 +19,7 @@ public class Unit : MonoBehaviour {
 	}
 
 	public virtual void Health_OnTakeDamage (object sender, System.EventArgs e){
-		Debug.Log("Took damage " + this.gameObject.name);
+//		Debug.Log("Took damage " + this.gameObject.name);
 		render.hsm.SetHealth((sender as PlayerHealth).currentHealth);
 	}
 }
