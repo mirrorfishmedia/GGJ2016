@@ -17,6 +17,18 @@ public class SoundMan : MonoBehaviour {
 	public AudioClip[] playerDeathClips;
 	public AudioClip[] playerHitClips;
 	public AudioClip[] resourceCollectClips;
+
+	public AudioClip[] resourceCollectSkull;
+	public AudioClip[] resourceCollectTriangle;
+	public AudioClip[] resourceCollectFire;
+	public AudioClip[] resourceCollectRaven;
+
+	public AudioClip[] resourceDepositSkull;
+	public AudioClip[] resourceDepositTriangle;
+	public AudioClip[] resourceDepositFire;
+	public AudioClip[] resourceDepositRaven;
+
+
 	public AudioClip[] resourcePickupClip;
 	public AudioClip[] singleColorScoredClips;
 
@@ -74,9 +86,46 @@ public class SoundMan : MonoBehaviour {
 		PlayClip (resourceCollectClips);
 	}
 
+	public void ResourceCollectRaven()
+	{
+		PlayClip (resourceCollectRaven);
+	}
+
+	public void ResourceCollectSkull()
+	{
+		PlayClip (resourceCollectSkull);
+	}
+
+	public void ResourceCollectFireball()
+	{
+		PlayClip (ResourceCollectFireball);
+	}
+
+	public void ResourceCollectTriangle()
+	{
+		PlayClip (ResourceCollectTriangle);
+	}
+
+	public void ResourceDepositSkull()
+	{
+		PlayClip (ResourceDepositSkull);
+	}
+
+	public void ResourceDepositRaven()
+	{
+		PlayClip (ResourceDepositRaven);
+	}
+
+	public void ResourceDepositFireball()
+	{
+		PlayClip (ResourceDepositFireball);
+	}
+
+
 	public void ResourcePickup()
 	{
 		PlayClip (resourcePickupClip);
+
 	}
 
 	public void ColorScored()
