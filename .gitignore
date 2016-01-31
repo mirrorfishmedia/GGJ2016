@@ -5,3 +5,9 @@ Icon^M^M
 ~
 /Library/
 /Temp/
+Assembly-CSharp.csproj
+Assembly-CSharp-vs.csproj
+Assets/Scripts/PlayerHealth.cs
+ProjectSettings/TagManager.asset
+GGJ2016.userprefs
+GGJ2016-csharp.sln
