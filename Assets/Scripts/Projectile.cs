@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour {
 	public GameObject particles;
 	public GameObject trail;
 
-	private int bulletDamage = 1;
+	private int bulletDamage = 2;
 
 
 	private PlayerHealth playerHealth;
