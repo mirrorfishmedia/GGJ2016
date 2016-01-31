@@ -10,7 +10,7 @@ public class SpawnMonks : MonoBehaviour {
 	public GameObject monkPf;
 	public Transform[] spawnPoints;
 
-	public Transform[] spawnerDestinations;
+	private Transform[] spawnerDestinations;
 
 	public enum MonkColor { Red,Blue,Green,Yellow }
 

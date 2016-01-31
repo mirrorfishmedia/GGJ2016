@@ -15,12 +15,8 @@ public class GameMan : MonoBehaviour {
 
 	public Transform camSpawnPos;
 
-	public enum resourceColor
-	{
-		fire, water, skull, leaf
-	}
+	private ResourceType neededResource;
 
-	public resourceColor neededColor = resourceColor.fire;
 	private int currentResourceTotal = 0;
 	private int maxResources = 5;
 	private int colorsScored = 0;
@@ -88,11 +84,11 @@ public class GameMan : MonoBehaviour {
 		}
 	}
 
-	public void AddResource(resourceColor collectedResource)
+	public void AddResource(ResourceType collectedResource)
 
 	{
 		Debug.Log ("in addResource");
-		if (collectedResource == neededColor) 
+		if (collectedResource == neededResource) 
 		{
 			Debug.Log ("got needed color");
 
