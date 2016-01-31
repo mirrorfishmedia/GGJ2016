@@ -60,4 +60,9 @@ public class UIMan : MonoBehaviour {
 	{
 		canvasGroups [6].target = 1;
 	}
+
+	public void FadeOutTitle()
+	{
+		canvasGroups [7].target = 0;
+	}
 }

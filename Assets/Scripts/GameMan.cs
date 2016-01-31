@@ -44,13 +44,21 @@ public class GameMan : MonoBehaviour {
 	private CameraControl camControlScript;
 
 
-
-	void Awake()
-	{
-		Time.timeScale = 1f;
-
-		uiMan = GetComponent<UIMan> ();
+	void Awake(){
 		SetupCamera ();
+		Time.timeScale = 1f;
+		uiMan = GetComponent<UIMan> ();
+		CameraControl.main.m_MinSize = 20f;
+		Invoke ("Awaken", 2f);
+
+	}
+
+	void Awaken()
+	{
+		uiMan.FadeOutTitle ();
+		CameraControl.main.m_MinSize = 12f;
+
+
 		sequencer = gameObject.AddComponent<ResourceSequence>(); 
 
 		joiner = GetComponent<InputMan>();

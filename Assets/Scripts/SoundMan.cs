@@ -172,10 +172,15 @@ public class SoundMan : MonoBehaviour {
 		audioSourceCounter = (audioSourceCounter + 1) % audioSources.Length;
 		var a = audioSources [audioSourceCounter];
 
+		try{
 		a.clip = clips[Random.Range (0, clips.Length)];
 		a.volume = Random.Range (randomizeMin, randomizeMax);
 		a.pitch = Random.Range (randomizeMin, randomizeMax);
 		a.Play ();
+		}
+		catch(System.Exception e){
+
+		}
 
 	}
 
