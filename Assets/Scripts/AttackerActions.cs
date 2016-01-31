@@ -23,9 +23,6 @@ public class AttackerActions : PlayerActionSet {
 		moveAttackerLeft = CreatePlayerAction ("MoveUnitLeft");
 		moveAttackerRight = CreatePlayerAction ("MoveUnitRight");
 		moveAttackerHorizontal = CreateOneAxisPlayerAction (moveAttackerLeft, moveAttackerRight);
-		
-		
-		
 		moveAttackerUp = CreatePlayerAction ("MoveUnitUp");
 		moveAttackerDown = CreatePlayerAction ("MoveUnitDown");
 		moveAttackerVertical = CreateOneAxisPlayerAction (moveAttackerDown,moveAttackerUp);

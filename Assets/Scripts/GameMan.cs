@@ -30,12 +30,14 @@ public class GameMan : MonoBehaviour {
 	public Slider healthSlider1;
 	public enum resourceColor
 	{
-		red, blue, yellow, green
+		fire, water, skull, leaf
 	}
 
-	public resourceColor neededColor = resourceColor.red;
+	public resourceColor neededColor = resourceColor.fire;
 	private int currentResourceTotal = 0;
 	private int maxResources = 5;
+	private int colorsScored = 0;
+	private int colorGoal = 4;
 
 
 	[HideInInspector] public GameObject spawnedCam;
@@ -142,14 +144,46 @@ public class GameMan : MonoBehaviour {
 
 	}
 
-	void AddResource(resourceColor collectedResource)
+	public void AddResource(resourceColor collectedResource)
 
 	{
+		Debug.Log ("in addResource");
 		if (collectedResource == neededColor) 
 		{
-		
+			Debug.Log ("got needed color");
+
+			currentResourceTotal++;
+			Debug.Log ("currentResource count " + currentResourceTotal);
+			if (currentResourceTotal >= maxResources)
+			{
+				currentResourceTotal = 0;
+				Debug.Log ("Reset resources to : " + currentResourceTotal);
+				ColorScored();
+			}
 		}
 	}
+
+	void ColorScored()
+	{
+		Debug.Log ("in color scored");
+		colorsScored++;
+		Debug.Log ("colors scored " + colorsScored);
+		if (colorsScored >= colorGoal) 
+		{
+			DefenderWins();
+		}
+	}
+
+	void DefenderWins()
+	{
+		Debug.Log ("Defender wins the round!");
+	}
+
+	void AttackerWins()
+	{
+		Debug.Log ("Attacker wins the round!");
+	}
+
 
 
 }

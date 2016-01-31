@@ -18,6 +18,8 @@ public class MonkController : MonoBehaviour {
 
 	private bool carryingResource = false;
 
+	private GameMan.resourceColor resourceCarried;
+
 	// Use this for initialization
 	void OnEnable () 
 	{
@@ -42,49 +44,72 @@ public class MonkController : MonoBehaviour {
 	{
 	}
 
-	/*
-	void LateUpdate()
-	{
-		float angle = Vector3.Angle(agent.velocity.normalized, this.transform.forward);
-		if (agent.velocity.normalized.x < this.transform.forward.x)
-		{
-			angle *= -1;
-		}
-		angle = (angle + 180.0f) % 360.0f;
-	}
-	*/
-
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag ("ResourceStack")) 
+		if (other.gameObject.CompareTag ("Leaf")) 
 		{
 			carryingResource = true;
-			resource1.SetActive(true);
+			resourceCarried = GameMan.resourceColor.leaf;
+			SetResourceIcon (resourceCarried);
 			agent.destination = home.position;
-
-			//transform.LookAt(agent.destination);
-			//source.clip  = pickupResource;
-			//source.Play();
-
 		}
+
+		if (other.gameObject.CompareTag ("Water")) 
+		{
+			carryingResource = true;
+			resourceCarried = GameMan.resourceColor.water;
+			SetResourceIcon (resourceCarried);
+			agent.destination = home.position;
+		}
+
+		if (other.gameObject.CompareTag ("Fire")) 
+		{
+			carryingResource = true;
+			resourceCarried = GameMan.resourceColor.fire;
+			SetResourceIcon (resourceCarried);
+			agent.destination = home.position;
+		}
+
+		if (other.gameObject.CompareTag ("Skull")) 
+		{
+			carryingResource = true;
+			resourceCarried = GameMan.resourceColor.skull;
+			SetResourceIcon (resourceCarried);
+			agent.destination = home.position;
+		}
+
+
 
 		if (other.gameObject.CompareTag ("DropPoint")) 
 		{
-
-			//agent.Stop();
-			//transform.LookAt(agent.destination);
 			if (carryingResource)
 			{
+				Grid.gameMan.AddResource(resourceCarried);
 				Grid.soundMan.PlayClip(deliverResourceSound);
-
 				carryingResource = false;
 				this.gameObject.SetActive(false);
-
 			}
-				
-
 		}
+	}
 
-
+	void SetResourceIcon(GameMan.resourceColor iconType)
+	{
+		switch (iconType) 
+		{
+		case GameMan.resourceColor.fire:
+			//set icon active
+			Debug.Log ("Carrying Resource: " + iconType);
+			break;
+		case GameMan.resourceColor.water:
+			//set icon active
+			break;
+		case GameMan.resourceColor.leaf:
+			//set icon active
+			break;
+		case GameMan.resourceColor.skull:
+			//set icon active
+			break;
+		}
+		Debug.Log ("Carrying Resource: " + iconType);
 	}
 }

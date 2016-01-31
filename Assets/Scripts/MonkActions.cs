@@ -33,7 +33,6 @@ public class MonkActions : PlayerActionSet {
 		moveUnitUp = CreatePlayerAction ("MoveUnitUp");
 		moveUnitDown = CreatePlayerAction ("MoveUnitDown");
 		moveVertical = CreateOneAxisPlayerAction (moveUnitDown,moveUnitUp);
-
 	}
 	
 }
