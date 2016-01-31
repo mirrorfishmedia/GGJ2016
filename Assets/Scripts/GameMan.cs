@@ -141,7 +141,6 @@ public class GameMan : MonoBehaviour {
 			camControlScript.m_Targets[i]  = clonePlayer.transform;
 //			Debug.Log ("cct " + camControlScript.m_Targets[i]);
 		}
-
 	}
 
 	public void AddResource(resourceColor collectedResource)

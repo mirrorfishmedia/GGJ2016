@@ -313,11 +313,11 @@
  <Reference Include="ProBuilderCore-Unity5">
  <HintPath>/Users/matthewschell/Desktop/MFM/GGJ2016/Project/GGJ2016/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
  </Reference>
- <Reference Include="KDTree">
- <HintPath>/Users/matthewschell/Desktop/MFM/GGJ2016/Project/GGJ2016/Assets/ProCore/ProBuilder/Classes/ClassesLib/KDTree.dll</HintPath>
- </Reference>
  <Reference Include="ProBuilderMeshOps-Unity5">
  <HintPath>/Users/matthewschell/Desktop/MFM/GGJ2016/Project/GGJ2016/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
+ </Reference>
+ <Reference Include="KDTree">
+ <HintPath>/Users/matthewschell/Desktop/MFM/GGJ2016/Project/GGJ2016/Assets/ProCore/ProBuilder/Classes/ClassesLib/KDTree.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/xUnity_5.1/Unity_5.1p3.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
