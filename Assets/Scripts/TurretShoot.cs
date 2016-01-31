@@ -30,7 +30,7 @@ public class TurretShoot : MonoBehaviour {
 
 	void Fire(){
 		nextFire = Time.time + fireRate;
-		GameObject cloneProjectile = Instantiate(projectilePf, spawnPoint.position, spawnPoint.rotation) as GameObject;
+		GameObject cloneProjectile = Instantiate(projectilePf, spawnPoint.position, Quaternion.identity) as GameObject;
 		Vector3 dirToTarget = targetReticule.position - transform.position;
 		Rigidbody cloneRb = cloneProjectile.GetComponent<Rigidbody>();
 		cloneRb.AddForce(dirToTarget.normalized * projectileSpeed);

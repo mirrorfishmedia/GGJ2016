@@ -19,21 +19,22 @@ public class GameMan : MonoBehaviour {
 	public Transform camSpawnPos;
 	private ResourceType neededResource;
 	ResourceSequence sequencer;
+	public SpriteDisplay[] resourceDisplay;
 
 	private int currentResourceTotal = 0;
 	private int maxResources = 1;
 	private int colorsScored = 0;
-	private int colorGoal = 4;
+	private int colorGoal = 3;
 
 	private InputMan joiner;
 
 	public InputTimerRenderer timerRenderer;
 
-	private float roundTimerFull = 20f;
+	private float roundTimerFull = 120f;
 	private float roundTimer = 0f;
 	private float roundTimerNormalized{get{return roundTimer / roundTimerFull;}}
 
-	private float spawnAttackerDelay = 5f;
+	private float spawnAttackerDelay = 1f;
 
 
 	[HideInInspector] public GameObject spawnedCam;
@@ -46,8 +47,8 @@ public class GameMan : MonoBehaviour {
 		SetupCamera ();
 		sequencer = gameObject.AddComponent<ResourceSequence>(); 
 		joiner = GetComponent<InputMan>();
-//		joiner.OnStartPressed += (sender, e) => {sequencer.StartInput(joiner.devices[0]);};
-		joiner.OnStartPressed += (sender, e) => {HardCodeStart();};
+		joiner.OnStartPressed += (sender, e) => {sequencer.StartInput(joiner.devices[0]);};
+//		joiner.OnStartPressed += (sender, e) => {HardCodeStart();};
 	}
 
 	void HardCodeStart(){
@@ -151,6 +152,7 @@ public class GameMan : MonoBehaviour {
 	void ColorScored()
 	{
 		Debug.Log ("in color scored");
+		resourceDisplay[colorsScored].SetFadeActive(true);
 		colorsScored++;
 		Debug.Log ("colors scored " + colorsScored);
 		if (colorsScored >= colorGoal) 
@@ -161,13 +163,15 @@ public class GameMan : MonoBehaviour {
 
 	void DefenderWins()
 	{
-		Debug.Log ("Defender wins the round!");
+		Debug.Log("Defender wins the round!");
+		Debug.Break();
 		gameOver = true;
 	}
 
 	void AttackerWins()
 	{
-		Debug.Log ("Attacker wins the round!");
+		Debug.Log("Attacker wins the round!");
+		Debug.Break();
 		gameOver = true;
 	}
 

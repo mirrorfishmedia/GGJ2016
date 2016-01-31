@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AttackDamage : MonoBehaviour {
 
-	private int damageAmount = 1;
+	private int damageAmount = 2;
 
 	private bool triggering;
 

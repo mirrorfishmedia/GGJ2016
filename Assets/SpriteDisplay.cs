@@ -3,8 +3,9 @@ using System.Collections;
 
 public class SpriteDisplay : MonoBehaviour {
 
+	bool active = false;
 	public Sprite[] sprites;
-	private float fadeSpeed = 1f;
+	private float fadeSpeed = 5f;
 
 	private SpriteRenderer spriteRenderer;
 
@@ -15,6 +16,10 @@ public class SpriteDisplay : MonoBehaviour {
 
 	void Update()
 	{
-		//spriteRenderer.color = Color.Lerp(Color.white, Color.black,Time.time);
+		spriteRenderer.color = Color.Lerp(spriteRenderer.color, active ? Color.white : Color.clear, Time.deltaTime * fadeSpeed);
+	}
+
+	public void SetFadeActive(bool active){
+		this.active = active;
 	}
 }

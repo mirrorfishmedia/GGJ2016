@@ -5,7 +5,7 @@ using InControl;
 
 public class SpawnMonks : MonoBehaviour {
 
-	public float spawnRate = .25f;
+	public float spawnRate = .25f/2f;
 
 	public GameObject monkPf;
 	public Transform[] spawnPoints;

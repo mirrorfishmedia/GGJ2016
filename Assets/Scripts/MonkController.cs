@@ -28,6 +28,7 @@ public class MonkController : Unit {
 		base.Awake();
 		agent = GetComponent<NavMeshAgent>();
 		source = GetComponent<AudioSource> ();
+		CameraControl.main.AddTarget(this);
 	}
 
 	void Start()
@@ -92,5 +93,9 @@ public class MonkController : Unit {
 //			break;
 //		}
 //		Debug.Log ("Carrying Resource: " + iconType);
+	}
+
+	void OnDisable(){
+		CameraControl.main.RemoveTarget(this);
 	}
 }

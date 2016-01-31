@@ -4,7 +4,7 @@ using InControl;
 public class MoveAttacker : MonoBehaviour
 {
 	public int playerNumber = 0;
-	public float speed = 6f;            // The speed that the player will move at.
+	private float speed = 6000f;            // The speed that the player will move at.
 	
 	Vector3 movement;                   // The vector to store the direction of the player's movement.
 	//Animator anim;                      // Reference to the animator component.
@@ -61,7 +61,7 @@ public class MoveAttacker : MonoBehaviour
 		movement = movement.normalized * speed * Time.deltaTime;
 		
 		// Move the player to it's current position plus the movement.
-		playerRigidbody.MovePosition (transform.position + movement);
+		playerRigidbody.AddForce(movement);
 	}
 	
 	void Turning ()

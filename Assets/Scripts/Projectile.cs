@@ -20,7 +20,7 @@ public class Projectile : MonoBehaviour {
 	
 	}
 
-	void OnCollisionEnter (Collision other)
+	void OnTriggerEnter (Collider other)
 	{
 		particles.SetActive (true);
 		particles.transform.SetParent (null);

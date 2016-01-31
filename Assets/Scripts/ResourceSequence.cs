@@ -21,7 +21,7 @@ public class ResourceSequence : MonoBehaviour {
 		this.device = device;
 		inputting = true;
 		currentInputIndex = 0;
-		inputArray = new ResourceType[4];
+		inputArray = new ResourceType[3];
 	}
 
 	public void Update(){
@@ -46,7 +46,7 @@ public class ResourceSequence : MonoBehaviour {
 		if (t != ResourceType.NONE){
 			Debug.Log("Input " + t.ToString());
 			inputArray[currentInputIndex++] = t;
-			if (currentInputIndex >= 4){
+			if (currentInputIndex >= 3){
 				Checker();
 			}
 		}
@@ -56,6 +56,7 @@ public class ResourceSequence : MonoBehaviour {
 
 		bool success = CheckArray();
 		if (success){
+			inputting = false;
 			gameMan.StartGame();
 		}
 		else{
