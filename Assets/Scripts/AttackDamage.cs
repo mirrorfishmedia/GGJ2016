@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AttackDamage : MonoBehaviour {
 
-	public int damageAmount = 25;
+	private int damageAmount = 2;
 
 	private bool triggering;
 
@@ -11,15 +11,16 @@ public class AttackDamage : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log ("trigger attack");
+//		Debug.Log ("trigger attack");
 		if (other.gameObject.CompareTag ("Monk") && !triggering) 
 		{
 			triggering = true;
-			Debug.Log ("Collision attack, tag check");
-			Debug.Log ("other gameobject " + other.gameObject);
-			EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+//			Debug.Log ("Collision attack, tag check");
+//			Debug.Log ("other gameobject " + other.gameObject);
+			PlayerHealth health = other.GetComponent<PlayerHealth>();
 
-			enemyHealth.TakeDamage(damageAmount, other.transform.position);
+			health.TakeDamage(damageAmount);
+			CameraShake.main.microShakeDuration = 1f;
 		}
 
 		if (other.gameObject.CompareTag ("Projectile")) {

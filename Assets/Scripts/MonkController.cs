@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MonkController : MonoBehaviour {
+public class MonkController : Unit {
 
 	private NavMeshAgent agent;
 
@@ -18,73 +18,89 @@ public class MonkController : MonoBehaviour {
 
 	private bool carryingResource = false;
 
+	private ResourceType resourceCarried;
+
+	private PlayerHealth health;
+
+
 	// Use this for initialization
-	void OnEnable () 
-	{
+	public override void Awake () {
+		base.Awake();
 		agent = GetComponent<NavMeshAgent>();
 		source = GetComponent<AudioSource> ();
-
+		CameraControl.main.AddTarget(this);
 	}
 
 	void Start()
 	{
 		agent.destination = destStack.position;
 		agent.updateRotation = false;
+		Grid.soundMan.MonkSpawn ();
 	}
 
-	void Die()
-	{
+
+	void Die(){
 		source.clip  = dieSound;
 		source.Play();
+		Grid.soundMan.MonkDie ();
 	}
 
-	void Update()
-	{
+	void CarryResource(ResourceType rtype){
+
+		this.carryingResource = true;
+		this.resourceCarried = rtype;
+		SetResourceIcon (resourceCarried);
+		agent.SetDestination(home.transform.position);
+		Grid.soundMan.ResourcePickup();
 	}
 
-	/*
-	void LateUpdate()
-	{
-		float angle = Vector3.Angle(agent.velocity.normalized, this.transform.forward);
-		if (agent.velocity.normalized.x < this.transform.forward.x)
-		{
-			angle *= -1;
+	void ScoreResource(){
+		if (carryingResource){
+			carryingResource = false;
+			Grid.gameMan.AddResource(resourceCarried);
+			Grid.soundMan.ResourceCollect();
+			this.gameObject.SetActive(false);
 		}
-		angle = (angle + 180.0f) % 360.0f;
 	}
-	*/
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag ("ResourceStack")) 
-		{
-			carryingResource = true;
-			resource1.SetActive(true);
-			agent.destination = home.position;
+		var g = other.gameObject;
 
-			//transform.LookAt(agent.destination);
-			//source.clip  = pickupResource;
-			//source.Play();
+		//carry resource
+		if (g.CompareTag("ResourceStack")){
+			var r = g.GetComponent<ResourceStack>();
+			CarryResource(r.rtype);
 
 		}
 
-		if (other.gameObject.CompareTag ("DropPoint")) 
-		{
-
-			//agent.Stop();
-			//transform.LookAt(agent.destination);
-			if (carryingResource)
-			{
-				Grid.soundMan.PlayClip(deliverResourceSound);
-
-				carryingResource = false;
-				this.gameObject.SetActive(false);
-
-			}
-				
-
+		else if (g.CompareTag ("DropPoint")) {
+			ScoreResource();
 		}
+	}
 
+	void SetResourceIcon(ResourceType iconType)
+	{
+//		switch (iconType) 
+//		{
+//		case GameMan.resourceColor.fire:
+//			//set icon active
+//			Debug.Log ("Carrying Resource: " + iconType);
+//			break;
+//		case GameMan.resourceColor.water:
+//			//set icon active
+//			break;
+//		case GameMan.resourceColor.leaf:
+//			//set icon active
+//			break;
+//		case GameMan.resourceColor.skull:
+//			//set icon active
+//			break;
+//		}
+//		Debug.Log ("Carrying Resource: " + iconType);
+	}
 
+	void OnDisable(){
+		CameraControl.main.RemoveTarget(this);
 	}
 }

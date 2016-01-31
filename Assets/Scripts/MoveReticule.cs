@@ -2,13 +2,19 @@
 
 public class MoveReticule : MonoBehaviour
 {
-	public float speed = 6f;            // The speed that the player will move at.
+	public float speed = 3f;            // The speed that the player will move at.
 	
 	Vector3 movement;                   // The vector to store the direction of the player's movement.
 	//Animator anim;                      // Reference to the animator component.
 	Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
 	//int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
 	float camRayLength = 100f;          // The length of the ray from the camera into the scene.
+
+	private MonkActions monkActions;
+
+	public void Init(MonkActions monkActions){
+		this.monkActions = monkActions;
+	}
 	
 	void Awake ()
 	{
@@ -18,6 +24,11 @@ public class MoveReticule : MonoBehaviour
 		// Set up references.
 		//anim = GetComponent <Animator> ();
 		playerRigidbody = GetComponent <Rigidbody> ();
+		CameraControl.main.AddTarget(this);
+	}
+
+	void OnDestroy(){
+		CameraControl.main.RemoveTarget(this);
 	}
 	
 	
@@ -30,9 +41,9 @@ public class MoveReticule : MonoBehaviour
 		//Debug.Log ("ic move: " + Grid.gameMan.monkCtrlActions.moveUnitH);
 
 		//float h = Input.GetAxisRaw ("Horizontal");
-		float h = Grid.gameMan.monkCtrlActions.moveHorizontal.Value;
+		float h = monkActions.moveHorizontal.Value;
 		//float v = Input.GetAxisRaw ("Vertical");
-		float v = Grid.gameMan.monkCtrlActions.moveVertical.Value;
+		float v = monkActions.moveVertical.Value;
 		
 		// Move the player around the scene.
 		Move (h, v);

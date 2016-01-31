@@ -29,6 +29,7 @@ namespace InControl
 			"InControl.GreenThrottleAtlasAndroidProfile",
 			"InControl.HamaBlackForceWinProfile",
 			"InControl.IpegaPG9023AndroidProfile",
+			"InControl.KeyboardController1",
 			"InControl.LevelUpBlackHawkWinProfile",
 			"InControl.LogitechF310LinuxProfile",
 			"InControl.LogitechF310ModeDMacProfile",

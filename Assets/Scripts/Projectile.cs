@@ -4,8 +4,9 @@ using System.Collections;
 public class Projectile : MonoBehaviour {
 
 	public GameObject particles;
+	public GameObject trail;
 
-	public int bulletDamage = 10;
+	private int bulletDamage = 1;
 
 
 	private PlayerHealth playerHealth;
@@ -20,8 +21,10 @@ public class Projectile : MonoBehaviour {
 	
 	}
 
-	void OnCollisionEnter (Collision other)
+	void OnTriggerEnter (Collider other)
 	{
+		trail.transform.SetParent(null);
+		Destroy(trail, 5f);
 		particles.SetActive (true);
 		particles.transform.SetParent (null);
 		this.gameObject.SetActive (false);
