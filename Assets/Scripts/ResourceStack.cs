@@ -3,7 +3,7 @@ using System.Collections;
 
 	public enum ResourceType
 	{
-		fire, water, skull, leaf
+		Fire, Feather, Skull, Pyramid, NONE
 	}
 public class ResourceStack : MonoBehaviour {
 

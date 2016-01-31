@@ -14,8 +14,8 @@ public class GameMan : MonoBehaviour {
 	public List<AttackerActions> attackerActions;
 
 	public Transform camSpawnPos;
-
 	private ResourceType neededResource;
+	ResourceSequence sequencer;
 
 	private int currentResourceTotal = 0;
 	private int maxResources = 5;
@@ -33,8 +33,9 @@ public class GameMan : MonoBehaviour {
 	void Awake()
 	{
 		SetupCamera ();
+		sequencer = gameObject.AddComponent<ResourceSequence>(); 
 		joiner = GetComponent<InputMan>();
-		joiner.OnStartPressed += (sender, e) => {StartGame();};
+		joiner.OnStartPressed += (sender, e) => {sequencer.StartInput(joiner.devices[0]);};
 	}
 
 
@@ -47,9 +48,8 @@ public class GameMan : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void StartGame () {
+	public void StartGame () {
 		Debug.Log("START GAME!");
-		SetupReticule ();
 		SetupDefender();
 		SetupAttackers ();
 	}
@@ -69,10 +69,6 @@ public class GameMan : MonoBehaviour {
 
 
 
-	void SetupReticule()
-	{
-	}
-
 	void SetupAttackers()
 	{
 		attackerActions = new List<AttackerActions>();
@@ -80,7 +76,7 @@ public class GameMan : MonoBehaviour {
 		var devices = joiner.devices;
 		for(int i = 1; i < devices.Length; i++){
 			var attacker = PrefabManager.Instantiate ("AttackingPlayer", Vector3.zero).GetComponent<AttackingPlayer>();
-			attacker.Init(devices[i]);
+			attacker.Init(devices[i], (UnitColor)i);
 		}
 	}
 

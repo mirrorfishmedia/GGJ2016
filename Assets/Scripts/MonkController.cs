@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MonkController : MonoBehaviour {
+public class MonkController : Unit {
 
 	private NavMeshAgent agent;
 
@@ -20,12 +20,14 @@ public class MonkController : MonoBehaviour {
 
 	private ResourceType resourceCarried;
 
+	private PlayerHealth health;
+
+
 	// Use this for initialization
-	void OnEnable () 
-	{
+	public override void Awake () {
+		base.Awake();
 		agent = GetComponent<NavMeshAgent>();
 		source = GetComponent<AudioSource> ();
-
 	}
 
 	void Start()
@@ -33,6 +35,7 @@ public class MonkController : MonoBehaviour {
 		agent.destination = destStack.position;
 		agent.updateRotation = false;
 	}
+
 
 	void Die(){
 		source.clip  = dieSound;
@@ -64,7 +67,6 @@ public class MonkController : MonoBehaviour {
 			var r = g.GetComponent<ResourceStack>();
 			CarryResource(r.rtype);
 		}
-
 
 		else if (g.CompareTag ("DropPoint")) {
 			ScoreResource();

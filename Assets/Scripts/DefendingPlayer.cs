@@ -11,7 +11,7 @@ public class DefendingPlayer : MonoBehaviour {
 	private MoveReticule reticule;
 
 
-	void Awake(){
+	public void Awake(){
 		turret = GetComponent<TurretShoot>();
 		spawner = GetComponent<SpawnMonks>();
 		reticule = GetComponent<MoveReticule>();
@@ -28,7 +28,7 @@ public class DefendingPlayer : MonoBehaviour {
 		reticule = PrefabManager.Instantiate ("TurretTargetReticule", Vector3.zero, Quaternion.identity).GetComponent<MoveReticule>();
 		reticule.Init(monkActions);
 		turret.targetReticule = reticule.transform;
-
 	}
+
 
 }

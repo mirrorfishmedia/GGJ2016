@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AttackDamage : MonoBehaviour {
 
-	public int damageAmount = 25;
+	private int damageAmount = 1;
 
 	private bool triggering;
 
@@ -17,9 +17,9 @@ public class AttackDamage : MonoBehaviour {
 			triggering = true;
 //			Debug.Log ("Collision attack, tag check");
 //			Debug.Log ("other gameobject " + other.gameObject);
-			EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+			PlayerHealth health = other.GetComponent<PlayerHealth>();
 
-			enemyHealth.TakeDamage(damageAmount, other.transform.position);
+			health.TakeDamage(damageAmount);
 		}
 
 		if (other.gameObject.CompareTag ("Projectile")) {

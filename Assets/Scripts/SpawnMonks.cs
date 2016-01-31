@@ -51,6 +51,7 @@ public class SpawnMonks : MonoBehaviour {
 	void SpawnMonk(Transform homeSpawn, Transform monkDestination){
 		GameObject monkClone = Instantiate (monkPf, homeSpawn.position, Quaternion.identity) as GameObject;
 		MonkController monkController = monkClone.GetComponent<MonkController>();
+		monkController.Init(UnitColor.Monk);
 		monkController.destStack = monkDestination;
 		monkController.home = homeSpawn;
 	}
