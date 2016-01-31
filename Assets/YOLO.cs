@@ -12,9 +12,5 @@ public class YOLO : MonoBehaviour {
 		gameObject.SetActive (false);
 		Invoke ("GOGO", 3f);
 	}
-
-	// Update is called once per frame
-	void Update () {
 	
-	}
 }
