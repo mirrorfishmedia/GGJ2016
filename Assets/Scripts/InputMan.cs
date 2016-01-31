@@ -12,6 +12,7 @@ public class InputMan : MonoBehaviour {
 	public bool gameStarted = false;
 
 	public event EventHandler OnPlayerJoined;
+	public event EventHandler OnStartAvailable;
 	public event EventHandler OnStartPressed;
 
 	public InputDevice[] devices{get{return joinedDevices.ToArray();}}
@@ -36,6 +37,9 @@ public class InputMan : MonoBehaviour {
 				joinedDevices.Add(dev);
 				OnPlayerJoined.Raise(this);
 				Debug.Log("PLAYER JOINED " + dev.Name);
+				if (joinedDevices.Count >= 2){
+					OnStartAvailable.Raise(this);
+				}
 			}
 		}
 

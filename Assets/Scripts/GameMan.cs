@@ -35,6 +35,7 @@ public class GameMan : MonoBehaviour {
 	private float roundTimerNormalized{get{return roundTimer / roundTimerFull;}}
 
 	private float spawnAttackerDelay = 1f;
+	private UIMan uiMan;
 
 
 	[HideInInspector] public GameObject spawnedCam;
@@ -44,11 +45,22 @@ public class GameMan : MonoBehaviour {
 
 	void Awake()
 	{
+		uiMan = GetComponent<UIMan> ();
 		SetupCamera ();
 		sequencer = gameObject.AddComponent<ResourceSequence>(); 
+
 		joiner = GetComponent<InputMan>();
-		joiner.OnStartPressed += (sender, e) => {sequencer.StartInput(joiner.devices[0]);};
+		joiner.OnStartPressed += (sender, e) => {
+			sequencer.StartInput(joiner.devices[0]);
+			uiMan.FadeOutStart();
+			uiMan.FadeInTimer();
+		};
+
+		joiner.OnStartAvailable += (sender, e) => {uiMan.FadeInStart();};
+
 //		joiner.OnStartPressed += (sender, e) => {HardCodeStart();};
+
+		joiner.OnPlayerJoined += (sender, e) => {uiMan.FadeOutText();};
 	}
 
 	void HardCodeStart(){

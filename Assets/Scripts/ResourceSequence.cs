@@ -1,6 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 using InControl;
+
+public class ResourceEventArgs : EventArgs{
+	public ResourceType resourceType;
+	public ResourceEventArgs(ResourceType t){
+		this.resourceType = t;
+	}
+}
 
 public class ResourceSequence : MonoBehaviour {
 
@@ -12,6 +20,11 @@ public class ResourceSequence : MonoBehaviour {
 	int currentInputIndex;
 	public ResourceType[] inputArray;
 	ResourceType[] checkArray;
+
+	public event EventHandler<ResourceEventArgs> OnInputted;
+	public event EventHandler OnCheckInputTrue;
+	public event EventHandler OnCheckInputFalse;
+	public event EventHandler OnInputAgain;
 
 	void Awake(){
 		gameMan = GetComponent<GameMan>();
@@ -45,6 +58,7 @@ public class ResourceSequence : MonoBehaviour {
 
 		if (t != ResourceType.NONE){
 			Debug.Log("Input " + t.ToString());
+			OnInputted.Raise(this, new ResourceEventArgs(t));
 			inputArray[currentInputIndex++] = t;
 			if (currentInputIndex >= 3){
 				Checker();
@@ -69,15 +83,18 @@ public class ResourceSequence : MonoBehaviour {
 			for(int i = 0; i < inputArray.Length; i++){
 				if (checkArray[i] != inputArray[i]){
 					Debug.Log("FAIL REDO");
+					OnCheckInputFalse.Raise(this);
 					checkArray = null;
 					return false;
 				}
 			}
 			Debug.Log("SUCCESS");
+			OnCheckInputTrue.Raise(this);
 			return true;
 		}
 		else{
 			Debug.Log("INPUT TO CONFIRM");
+			OnInputAgain.Raise(this);
 			if (checkArray == null) checkArray = inputArray;
 			return false;
 		}
