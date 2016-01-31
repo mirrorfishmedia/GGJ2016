@@ -28,6 +28,14 @@ public class GameMan : MonoBehaviour {
 	public TurretShoot turretScript;
 	public Image damageImage1;
 	public Slider healthSlider1;
+	public enum resourceColor
+	{
+		red, blue, yellow, green
+	}
+
+	public resourceColor neededColor = resourceColor.red;
+	private int currentResourceTotal = 0;
+	private int maxResources = 5;
 
 
 	[HideInInspector] public GameObject spawnedCam;
@@ -132,6 +140,15 @@ public class GameMan : MonoBehaviour {
 //			Debug.Log ("cct " + camControlScript.m_Targets[i]);
 		}
 
+	}
+
+	void AddResource(resourceColor collectedResource)
+
+	{
+		if (collectedResource == neededColor) 
+		{
+		
+		}
 	}
 
 
