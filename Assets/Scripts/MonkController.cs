@@ -110,6 +110,6 @@ public class MonkController : MonoBehaviour {
 			//set icon active
 			break;
 		}
-		Debug.Log ("Carrying Resource: " + iconType);
+//		Debug.Log ("Carrying Resource: " + iconType);
 	}
 }

@@ -11,12 +11,12 @@ public class AttackDamage : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log ("trigger attack");
+//		Debug.Log ("trigger attack");
 		if (other.gameObject.CompareTag ("Monk") && !triggering) 
 		{
 			triggering = true;
-			Debug.Log ("Collision attack, tag check");
-			Debug.Log ("other gameobject " + other.gameObject);
+//			Debug.Log ("Collision attack, tag check");
+//			Debug.Log ("other gameobject " + other.gameObject);
 			EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
 
 			enemyHealth.TakeDamage(damageAmount, other.transform.position);

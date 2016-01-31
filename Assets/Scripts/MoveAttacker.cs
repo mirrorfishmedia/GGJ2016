@@ -11,10 +11,15 @@ public class MoveAttacker : MonoBehaviour
 	Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
 	//int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
 	float camRayLength = 100f;          // The length of the ray from the camera into the scene.
+
+	private AttackerActions attackerActions;
+
+	public void Init(AttackerActions attackerActions){
+		this.attackerActions = attackerActions;
+	}
 	
 	void Awake ()
 	{
-
 		// Create a layer mask for the floor layer.
 		//floorMask = LayerMask.GetMask ("Floor");
 		
@@ -33,9 +38,9 @@ public class MoveAttacker : MonoBehaviour
 		//Debug.Log ("ic move: " + Grid.gameMan.monkCtrlActions.moveUnitH);
 		
 		//float h = Input.GetAxisRaw ("Horizontal");
-		float h = Grid.gameMan.attackerActions1.moveAttackerHorizontal.Value;
+		float h = attackerActions.moveAttackerHorizontal.Value;
 		//float v = Input.GetAxisRaw ("Vertical");
-		float v = Grid.gameMan.attackerActions1.moveAttackerVertical.Value;
+		float v = attackerActions.moveAttackerVertical.Value;
 		
 		// Move the player around the scene.
 		Move (h, v);

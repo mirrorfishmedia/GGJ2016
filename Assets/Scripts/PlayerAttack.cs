@@ -3,31 +3,37 @@ using System.Collections;
 
 public class PlayerAttack : MonoBehaviour {
 
-	public GameObject attackSphere;
-	public float attackRate = .25f;
+	private AttackDamage attackSphere;
+
+	private float attackRate = .25f;
+	private float attackLength = .2f;
+
 	private float nextAttackTime;
-	public float attackLength;
 
 
 	private bool attacking;
 
-	// Use this for initialization
-	void Start () {
-	
+	private AttackerActions attackerActions;
+	public void Init(AttackerActions attackerActions){
+		this.attackerActions = attackerActions;
 	}
-	
+
+	void Awake(){
+		attackSphere = GetComponentInChildren<AttackDamage>();
+		attackSphere.gameObject.SetActive(false);
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{
-		if (Grid.gameMan.attackerActions1.attackerAttack && Time.time > nextAttackTime && !attacking) {
+		if (attackerActions.attackerAttack && Time.time > nextAttackTime && !attacking) {
 			nextAttackTime = Time.time + attackRate;
 			attacking = true;
-			attackSphere.SetActive (true);
+			attackSphere.gameObject.SetActive (true);
 			
 		} else 
 		{
-			if (attacking)
-			{
+			if (attacking){
 				Invoke ("DeactivateSphere", attackLength);
 			}
 
@@ -37,6 +43,6 @@ public class PlayerAttack : MonoBehaviour {
 	void DeactivateSphere()
 	{
 		attacking = false;
-		attackSphere.SetActive (false);
+		attackSphere.gameObject.SetActive (false);
 	}
 }

@@ -19,7 +19,7 @@ public class MonkActions : PlayerActionSet {
 
 
 	
-	public MonkActions()
+	public MonkActions(InputDevice device)
 	{
 		spawn0 = CreatePlayerAction ("Spawn0");
 		spawn1 = CreatePlayerAction ("Spawn1");
@@ -33,6 +33,20 @@ public class MonkActions : PlayerActionSet {
 		moveUnitUp = CreatePlayerAction ("MoveUnitUp");
 		moveUnitDown = CreatePlayerAction ("MoveUnitDown");
 		moveVertical = CreateOneAxisPlayerAction (moveUnitDown,moveUnitUp);
+
+		Device = device;
+
+		spawn0.AddDefaultBinding (InputControlType.Action1);
+		spawn1.AddDefaultBinding (InputControlType.Action2);
+		spawn2.AddDefaultBinding (InputControlType.Action3);
+		spawn3.AddDefaultBinding (InputControlType.Action4);
+		fireTurret.AddDefaultBinding (InputControlType.RightTrigger);
+
+		moveUnitLeft.AddDefaultBinding (InputControlType.LeftStickLeft);
+		moveUnitRight.AddDefaultBinding (InputControlType.LeftStickRight);
+		moveUnitUp.AddDefaultBinding (InputControlType.LeftStickUp);
+		moveUnitDown.AddDefaultBinding (InputControlType.LeftStickDown);
+
 	}
 	
 }

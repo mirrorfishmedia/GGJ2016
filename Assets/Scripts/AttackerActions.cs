@@ -15,9 +15,8 @@ public class AttackerActions : PlayerActionSet {
 
 
 
-	public AttackerActions()
+	public AttackerActions(InputDevice device)
 	{
-	
 		attackerAttack = CreatePlayerAction ("AttackerAttack");
 
 		moveAttackerLeft = CreatePlayerAction ("MoveUnitLeft");
@@ -27,5 +26,12 @@ public class AttackerActions : PlayerActionSet {
 		moveAttackerDown = CreatePlayerAction ("MoveUnitDown");
 		moveAttackerVertical = CreateOneAxisPlayerAction (moveAttackerDown,moveAttackerUp);
 
+		this.Device = device;
+
+		attackerAttack.AddDefaultBinding (InputControlType.Action1);
+		moveAttackerLeft.AddDefaultBinding (InputControlType.LeftStickLeft);
+		moveAttackerRight.AddDefaultBinding (InputControlType.LeftStickRight);
+		moveAttackerUp.AddDefaultBinding (InputControlType.LeftStickUp);
+		moveAttackerDown.AddDefaultBinding (InputControlType.LeftStickDown);
 	}
 }

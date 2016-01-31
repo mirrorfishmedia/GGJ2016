@@ -1,21 +1,38 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class CameraControl : MonoBehaviour
 {
+	public static CameraControl main;
+
 	public float m_DampTime = 0.2f;                 // Approximate time for the camera to refocus.
 	public float m_ScreenEdgeBuffer = 4f;           // Space between the top/bottom most target and the screen edge.
 	public float m_MinSize = 6.5f;                  // The smallest orthographic size the camera can be.
-	public Transform[] m_Targets; // All the targets the camera needs to encompass.
+	public List<Transform> m_Targets; // All the targets the camera needs to encompass.
 	
 	
 	private Camera m_Camera;                        // Used for referencing the camera.
 	private float m_ZoomSpeed;                      // Reference speed for the smooth damping of the orthographic size.
 	private Vector3 m_MoveVelocity;                 // Reference velocity for the smooth damping of the position.
 	private Vector3 m_DesiredPosition;              // The position the camera is moving towards.
+
+	public void AddTarget(MonoBehaviour target){
+		AddTarget(target.transform);
+	}
+	public void AddTarget(Transform target){
+		m_Targets.Add(target);
+	}
+
+	public void RemoveTarget(MonoBehaviour target){
+		RemoveTarget(target.transform);
+	}
+
+	public void RemoveTarget(Transform target){
+		m_Targets.Remove(target);
+	}
 	
-	
-	private void Awake ()
-	{
+	private void Awake (){
+		main = this;
 		m_Camera = GetComponentInChildren<Camera> ();
 	}
 	
@@ -46,7 +63,7 @@ public class CameraControl : MonoBehaviour
 		int numTargets = 0;
 		
 		// Go through all the targets and add their positions together.
-		for (int i = 0; i < m_Targets.Length; i++)
+		for (int i = 0; i < m_Targets.Count; i++)
 		{
 			// If the target isn't active, go on to the next one.
 			if (!m_Targets[i].gameObject.activeSelf)
@@ -86,7 +103,7 @@ public class CameraControl : MonoBehaviour
 		float size = 0f;
 		
 		// Go through all the targets...
-		for (int i = 0; i < m_Targets.Length; i++)
+		for (int i = 0; i < m_Targets.Count; i++)
 		{
 			// ... and if they aren't active continue on to the next target.
 			if (!m_Targets[i].gameObject.activeSelf)
