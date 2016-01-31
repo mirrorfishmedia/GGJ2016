@@ -9,6 +9,8 @@ public class SoundMan : MonoBehaviour {
 
 	public AudioClip[] bellSelect;
 
+	public AudioClip[] altarAnimation;
+
 	public AudioClip[] fireTurretClips;
 	public AudioClip[] monkDieClips;
 	public AudioClip[] monkHitClips;
