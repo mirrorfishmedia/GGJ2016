@@ -10,6 +10,8 @@ public class HealthSpriteMan : MonoBehaviour {
 
 	private Transform indicatorFolder;
 
+	public bool playAttackerHitSound = false;
+
 	public void Init(Sprite onSprite){
 		for(int i = 0; i < indicators.Count; i++){
 			indicators[i].Init(onSprite);
@@ -33,6 +35,14 @@ public class HealthSpriteMan : MonoBehaviour {
 	public void SetHealth(int health){
 		for(int i = 0; i < indicators.Count; i++){
 			indicators[i].AnimateActive(i < health);
+			if (playAttackerHitSound)
+			{
+				Grid.soundMan.PlayerHit();
+			}
+			else
+			{
+				Grid.soundMan.MonkHit();
+			}
 		}
 	}
 

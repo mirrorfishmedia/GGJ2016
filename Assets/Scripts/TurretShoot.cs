@@ -34,6 +34,7 @@ public class TurretShoot : MonoBehaviour {
 		Vector3 dirToTarget = targetReticule.position - transform.position;
 		Rigidbody cloneRb = cloneProjectile.GetComponent<Rigidbody>();
 		cloneRb.AddForce(dirToTarget.normalized * projectileSpeed);
+		Grid.soundMan.FireTurret ();
 	}
 
 }

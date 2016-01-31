@@ -30,6 +30,7 @@ public class PlayerAttack : MonoBehaviour {
 			nextAttackTime = Time.time + attackRate;
 			attacking = true;
 			attackSphere.gameObject.SetActive (true);
+			Grid.soundMan.PlayerAttack();
 			
 		} else 
 		{
