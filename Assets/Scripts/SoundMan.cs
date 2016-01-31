@@ -35,6 +35,7 @@ public class SoundMan : MonoBehaviour {
 	public AudioClip[] resourcePickupClip;
 	public AudioClip[] singleColorScoredClips;
 
+	private int audioSourceCounter = 0;
 	public AudioSource[] audioSources;
 
 	private AudioSource source; 
@@ -44,6 +45,21 @@ public class SoundMan : MonoBehaviour {
 	{
 		source = GetComponent<AudioSource> ();
 	}
+
+	void Start()
+	{
+	
+		audioSources = new AudioSource[64];
+		for (int i = 0; i < audioSources.Length; i++) {
+		
+			var a = new GameObject ("AudioSource" + i).AddComponent <AudioSource> ();
+			a.transform.SetParentZeroed (this.transform);
+			audioSources [i] = a;
+
+		}
+
+	}
+
 
 	public void FireTurret()
 	{
@@ -147,13 +163,14 @@ public class SoundMan : MonoBehaviour {
 		source.Play ();
 
 */
+		audioSourceCounter = (audioSourceCounter + 1) % audioSources.Length;
+		var a = audioSources [audioSourceCounter];
 
-		for (int i =0; i < audioSources.Length; i++){
-			audioSources[i].clip = clips[Random.Range (0, clips.Length)];
-			audioSources[i].volume = Random.Range (randomizeMin, randomizeMax);
-			audioSources[i].pitch = Random.Range (randomizeMin, randomizeMax);
-			audioSources[i].Play ();
-		}
+		a.clip = clips[Random.Range (0, clips.Length)];
+		a.volume = Random.Range (randomizeMin, randomizeMax);
+		a.pitch = Random.Range (randomizeMin, randomizeMax);
+		a.Play ();
+
 	}
 }
 
