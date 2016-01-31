@@ -77,6 +77,8 @@ public class GameMan : MonoBehaviour {
 			resourceDisplay[0].GetComponentInParent<LocalPositionSpring>().velocity += new Vector3(20f, 0f, 0f);
 			HandleOnInputAgain(sender, e);};
 		sequencer.OnCheckInputTrue += HandleOnInputAgain;
+
+		SoundMan.main.StartTitleMusic ();
 	}
 
 	void HandleOnInputAgain (object sender, System.EventArgs e)
@@ -118,6 +120,7 @@ public class GameMan : MonoBehaviour {
 
 	// Use this for initialization
 	public void StartGame () {
+		SoundMan.main.StartFightMusic ();
 		uiMan.FadeOutSequencePrompt ();
 		Debug.Log("START GAME!");
 		SetupDefender();
@@ -179,21 +182,24 @@ public class GameMan : MonoBehaviour {
 		switch (collectedResource) 
 		{
 		case ResourceType.Skull:
-			//play sound
+			SoundMan.main.ResourceCollectSkull();
 			break;
 		case ResourceType.Feather:
-			//play sound
+			SoundMan.main.ResourceCollectRaven();
 			break;
 		case ResourceType.Fire:
+			SoundMan.main.ResourceCollectFireball();
 			//play sound
 			break;
 		case ResourceType.Pyramid:
+			SoundMan.main.ResourceCollectTriangle();
 			//play sound
 			break;
 		}
 
 		if (gameOver) return;
 		Debug.Log ("in addResource " + collectedResource.ToString());
+		Debug.Log ("Needed resource: " + neededResource);
 		if (collectedResource == sequencer.inputArray[colorsScored]) 
 		{
 			Debug.Log ("got needed color");
@@ -244,6 +250,7 @@ public class GameMan : MonoBehaviour {
 		CameraControl.main.m_Targets = new List<Transform> ();
 		Invoke ("SlowDown", 1f);
 		gameOver = true;
+		SoundMan.main.StartTitleMusic ();
 
 	}
 
@@ -257,6 +264,7 @@ public class GameMan : MonoBehaviour {
 		CameraControl.main.m_Targets = attackerTransforms;
 		Invoke ("SlowDown", 1f);
 		gameOver = true;
+		SoundMan.main.StartTitleMusic ();
 
 	}
 

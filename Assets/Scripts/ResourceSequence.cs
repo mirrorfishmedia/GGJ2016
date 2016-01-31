@@ -44,16 +44,20 @@ public class ResourceSequence : MonoBehaviour {
 	void InputCheck(){
 		ResourceType t = ResourceType.NONE;
 		if (device.Action1.WasReleased){
-			t = ResourceType.Fire;
-		}
-		else if (device.Action2.WasReleased){
+			//t = ResourceType.Fire;
 			t = ResourceType.Feather;
 		}
+		else if (device.Action2.WasReleased){
+			//t = ResourceType.Feather;
+			t = ResourceType.Fire;
+		}
 		else if (device.Action3.WasReleased){
-			t = ResourceType.Skull;
+			//t = ResourceType.Skull;
+			t = ResourceType.Pyramid;
 		}
 		else if (device.Action4.WasReleased){
-			t = ResourceType.Pyramid;
+			//t = ResourceType.Pyramid;
+			t = ResourceType.Skull;
 		}
 
 		if (t != ResourceType.NONE && currentInputIndex <= 2){

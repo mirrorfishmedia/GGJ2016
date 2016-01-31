@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Audio;
 
 public class SoundMan : MonoBehaviour {
 	public static SoundMan main;
 
 	float randomizeMin = .70f;
 	float randomizeMax = 1.2f;
+
+	public AudioMixerSnapshot fightMusic;
+	public AudioMixerSnapshot titleMusic;
 
 	public AudioClip[] bellSelect;
 
@@ -161,6 +165,16 @@ public class SoundMan : MonoBehaviour {
 			audioSources[i].pitch = Random.Range (randomizeMin, randomizeMax);
 			audioSources[i].Play ();
 		}
+	}
+
+	public void StartFightMusic()
+	{
+		fightMusic.TransitionTo (1f);
+	}
+
+	public void StartTitleMusic()
+	{
+		titleMusic.TransitionTo (1f);
 	}
 }
 
