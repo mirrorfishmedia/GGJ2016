@@ -4,7 +4,7 @@ using InControl;
 
 public class AttackingPlayer : Unit {
 
-	AttackerActions attackerActions;
+	public AttackerActions attackerActions{get; private set;}
 
 	MoveAttacker motor;
 	PlayerAttack atk;

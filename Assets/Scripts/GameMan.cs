@@ -33,6 +33,8 @@ public class GameMan : MonoBehaviour {
 	private float roundTimer = 0f;
 	private float roundTimerNormalized{get{return roundTimer / roundTimerFull;}}
 
+	private float spawnAttackerDelay = 5f;
+
 
 	[HideInInspector] public GameObject spawnedCam;
 	private CameraControl camControlScript;
@@ -108,10 +110,23 @@ public class GameMan : MonoBehaviour {
 
 		var devices = joiner.devices;
 		for(int i = 1; i < devices.Length; i++){
-			var attacker = PrefabManager.Instantiate ("AttackingPlayer", Vector3.zero).GetComponent<AttackingPlayer>();
-			attacker.Init(devices[i], (UnitColor)i);
+			SpawnAttacker(devices[i], (UnitColor)i);
 		}
 	}
+
+	void SpawnAttacker(InputDevice dev, UnitColor color){
+		var spawn = environment.playerSpawns[(int)color].transform.position;
+		var attacker = PrefabManager.Instantiate ("AttackingPlayer", spawn).GetComponent<AttackingPlayer>();
+		attacker.Init(dev, color);
+		attacker.health.OnDie += (sender, e) => {StartCoroutine(SpawnPlayerDelayed(dev, color));};
+	}
+
+	IEnumerator SpawnPlayerDelayed(InputDevice device, UnitColor c){
+		yield return new WaitForSeconds(spawnAttackerDelay);
+		SpawnAttacker(device, c);
+	}
+
+
 
 	public void AddResource(ResourceType collectedResource)
 
