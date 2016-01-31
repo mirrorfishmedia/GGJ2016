@@ -47,8 +47,8 @@ public class GameMan : MonoBehaviour {
 		SetupCamera ();
 		sequencer = gameObject.AddComponent<ResourceSequence>(); 
 		joiner = GetComponent<InputMan>();
-//		joiner.OnStartPressed += (sender, e) => {sequencer.StartInput(joiner.devices[0]);};
-		joiner.OnStartPressed += (sender, e) => {HardCodeStart();};
+		joiner.OnStartPressed += (sender, e) => {sequencer.StartInput(joiner.devices[0]);};
+//		joiner.OnStartPressed += (sender, e) => {HardCodeStart();};
 	}
 
 	void HardCodeStart(){
