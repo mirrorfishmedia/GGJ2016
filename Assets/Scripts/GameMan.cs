@@ -155,6 +155,7 @@ public class GameMan : MonoBehaviour {
 		resourceDisplay[colorsScored].SetFadeActive(true);
 		colorsScored++;
 		Debug.Log ("colors scored " + colorsScored);
+		Grid.soundMan.ColorScored ();
 		if (colorsScored >= colorGoal) 
 		{
 			DefenderWins();
@@ -166,6 +167,7 @@ public class GameMan : MonoBehaviour {
 		Debug.Log("Defender wins the round!");
 		Debug.Break();
 		gameOver = true;
+
 	}
 
 	void AttackerWins()
@@ -173,6 +175,7 @@ public class GameMan : MonoBehaviour {
 		Debug.Log("Attacker wins the round!");
 		Debug.Break();
 		gameOver = true;
+		Grid.soundMan.OutOfTime ();
 	}
 
 

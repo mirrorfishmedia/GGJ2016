@@ -15,7 +15,7 @@ public class Unit : MonoBehaviour {
 	public void Init(UnitColor color){
 		render = UnitRenderer.New(color);
 		render.transform.SetParentZeroed(this.transform);
-		render.transform.localScale = new Vector3(.3f,.3f,.3f);
+		render.GetComponent<ScaleSpring>().target = Vector3.one * .3f;
 		render.transform.rotation = CameraControl.rot;
 		health.OnTakeDamage += Health_OnTakeDamage;;
 		health.OnDie += Health_OnDie;

@@ -31,7 +31,7 @@ public class PlayerAttack : MonoBehaviour {
 			attacking = true;
 			attackSphere.gameObject.SetActive (true);
 			CameraShake.main.microShakeDuration = .2f;
-
+			Grid.soundMan.PlayerAttack();
 		} else 
 		{
 			if (attacking){

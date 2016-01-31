@@ -32,9 +32,12 @@ public class TurretShoot : MonoBehaviour {
 		nextFire = Time.time + fireRate;
 		GameObject cloneProjectile = Instantiate(projectilePf, spawnPoint.position, Quaternion.identity) as GameObject;
 		Vector3 dirToTarget = targetReticule.position - transform.position;
+		targetReticule.GetComponent<ScaleSpring>().velocity += new Vector3(2f,1f,-6f);
+		targetReticule.GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
 		Rigidbody cloneRb = cloneProjectile.GetComponent<Rigidbody>();
 		cloneRb.AddForce(dirToTarget.normalized * projectileSpeed);
 		CameraShake.main.Shake(dirToTarget.normalized * 10f);
+		Grid.soundMan.FireTurret ();
 	}
 
 }

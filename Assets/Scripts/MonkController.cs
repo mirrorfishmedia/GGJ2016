@@ -35,26 +35,30 @@ public class MonkController : Unit {
 	{
 		agent.destination = destStack.position;
 		agent.updateRotation = false;
+		Grid.soundMan.MonkSpawn ();
 	}
 
 
 	void Die(){
 		source.clip  = dieSound;
 		source.Play();
+		Grid.soundMan.MonkDie ();
 	}
 
 	void CarryResource(ResourceType rtype){
+
 		this.carryingResource = true;
 		this.resourceCarried = rtype;
 		SetResourceIcon (resourceCarried);
 		agent.SetDestination(home.transform.position);
+		Grid.soundMan.ResourcePickup();
 	}
 
 	void ScoreResource(){
 		if (carryingResource){
 			carryingResource = false;
 			Grid.gameMan.AddResource(resourceCarried);
-			Grid.soundMan.PlayClip(deliverResourceSound);
+			Grid.soundMan.ResourceCollect();
 			this.gameObject.SetActive(false);
 		}
 	}
@@ -67,6 +71,7 @@ public class MonkController : Unit {
 		if (g.CompareTag("ResourceStack")){
 			var r = g.GetComponent<ResourceStack>();
 			CarryResource(r.rtype);
+
 		}
 
 		else if (g.CompareTag ("DropPoint")) {
